@@ -1,4 +1,8 @@
 import 'package:design_patterns_flutter/patterns/creational/abstract_factory/abstract_factory_demo.dart';
+import 'package:design_patterns_flutter/patterns/creational/abstract_factory/code/abstract_factory.dart';
+import 'package:design_patterns_flutter/patterns/creational/abstract_factory/code/banner_factory.dart';
+import 'package:design_patterns_flutter/patterns/creational/abstract_factory/code/snackbar_factory.dart';
+import 'package:design_patterns_flutter/patterns/creational/abstract_factory/code/summary.dart';
 import 'package:design_patterns_flutter/patterns/creational/factory/code/code.dart';
 import 'package:design_patterns_flutter/patterns/creational/factory/code/demo.dart';
 import 'package:design_patterns_flutter/patterns/creational/factory/code/summary.dart';
@@ -63,7 +67,12 @@ final patterns = <PatternEntry>[
     name: "Abstract Factory",
     category: "Creational",
     builder: (_) => const NotificationsDualDemo(),
-    markdown: '## Abstract Factory\nBreve explicación y diagrama…',
+    markdown: abstractFactorySummary,
+    codeSnippets: [
+      CodeSnippet(title: 'abstract_factory.dart', code: abstractFactory),
+      CodeSnippet(title: 'banner_factory.dart', code: bannerFactory),
+      CodeSnippet(title: 'snackbar_factory.dart', code: snackbarFactory),
+    ],
   ),
   PatternEntry(
     id: 'singleton',
