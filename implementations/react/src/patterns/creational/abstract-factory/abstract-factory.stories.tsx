@@ -3,17 +3,17 @@
 
 import type { Meta, StoryFn } from "@storybook/react";
 import * as RadixToast from "@radix-ui/react-toast";
-
 import { toastFactory } from "./toast-factory";
 import { bannerFactory } from "./banner-factory";
-// Si exportas Variant desde notification-factory, puedes importarlo. Aquí lo tipamos inline:
-type Variant = "success" | "alert" | "informative" | "warning";
+
 type Mode = "toast" | "banner";
 
 import toastFactoryCode from "./toast-factory.tsx?raw";
 import bannerFactoryCode from "./banner-factory.tsx?raw";
 import interfaceCode from "./notification-factory.tsx?raw";
 import { CodeBlock } from "../../../components/code-block";
+import type { Variant } from "./types/variants";
+import { useState } from "react";
 
 export default {
   title: "Design Patterns/Creational/Abstract Factory",
@@ -109,17 +109,8 @@ const Template: StoryFn<Args> = (args) => {
   return <div className="max-w-2xl">{element}</div>;
 };
 
-/** Story principal con controles */
-export const Playground = Template.bind({});
-Playground.args = {
-  mode: "toast",
-  variant: "success",
-  title: "",
-  description: "Operación completada exitosamente.",
-};
 
-/** Demostración de consistencia: misma variante en ambos productos */
-export const SameFamilyBothProducts: StoryFn = () => {
+export const Implementation: StoryFn = () => {
   return (
     <div className="space-y-4">
       <details className="rounded-lg border bg-white p-3 open:pb-3">
@@ -152,7 +143,7 @@ export const SameFamilyBothProducts: StoryFn = () => {
     </div>
   );
 };
-SameFamilyBothProducts.parameters = {
+Implementation.parameters = {
   docs: {
     description: {
       story:
@@ -161,8 +152,7 @@ SameFamilyBothProducts.parameters = {
   },
 };
 
-/** Variantes rápidas por modo para documentación */
-export const AllVariantsBanner: StoryFn = () => (
+export const VariantsBannerFactory: StoryFn = () => (
   <div className="space-y-3 max-w-2xl">
     {bannerFactory.createSuccess({ description: "Operación exitosa." })}
     {bannerFactory.createAlert({ description: "Error al guardar cambios." })}
@@ -171,14 +161,48 @@ export const AllVariantsBanner: StoryFn = () => (
   </div>
 );
 
-export const AllVariantsToast: StoryFn = () => (
-  <RadixToast.Provider swipeDirection="right">
-    <div className="space-y-2">
-      {toastFactory.createSuccess({ description: "Operación exitosa." })}
-      {toastFactory.createAlert({ description: "Error al guardar cambios." })}
-      {toastFactory.createInformative({ description: "Nueva versión disponible." })}
-      {toastFactory.createWarning({ description: "Tu sesión expirará pronto." })}
-    </div>
-    <RadixToast.Viewport className="fixed top-5 right-5 flex flex-col gap-2 w-80 z-50 list-none pl-0" />
-  </RadixToast.Provider>
-);
+export const VariantsToastFactory: StoryFn = () => {
+  const variants = [
+    { fn: toastFactory.createSuccess, label: "Operación exitosa." },
+    { fn: toastFactory.createAlert, label: "Error al guardar cambios." },
+    { fn: toastFactory.createInformative, label: "Nueva versión disponible." },
+    { fn: toastFactory.createWarning, label: "Tu sesión expirará pronto." },
+  ];
+
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <RadixToast.Provider swipeDirection="right">
+      <div className="space-y-2">
+        {variants.map((v, i) => (
+          <button
+            key={i}
+            className={`p-3 m-2 rounded text-white cursor-pointer ${v.fn === toastFactory.createSuccess ? "bg-green-500" : v.fn === toastFactory.createAlert ? "bg-red-500" : v.fn === toastFactory.createInformative ? "bg-blue-500" : "bg-yellow-500"}`}
+            onClick={() => setOpenIndex(i)}
+          >
+            Mostrar {v.label}
+          </button>
+        ))}
+      </div>
+      {openIndex !== null &&
+        variants[openIndex].fn({
+          description: variants[openIndex].label,
+          open: true,
+          onOpenChange: (open: boolean) => {
+            if (!open) setOpenIndex(null);
+          },
+        })}
+      <RadixToast.Viewport className="fixed top-5 right-5 flex flex-col gap-2 w-80 z-50 list-none pl-0" />
+    </RadixToast.Provider>
+  );
+};
+
+export const Playground = Template.bind({});
+Playground.args = {
+  mode: "toast",
+  variant: "success",
+  title: "",
+  description: "Operación completada exitosamente.",
+};
+
+

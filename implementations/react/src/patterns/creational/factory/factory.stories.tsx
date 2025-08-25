@@ -45,7 +45,6 @@ const Template: StoryFn<{ variant: Variant; description: string }> = (args) => {
   return <>{createToast(args.variant, args.description)}</>
 }
 
-// Demonstrate factory pattern flexibility
 export const Implementation = () => {
   const notifications = [
     { variant: "success" as Variant, msg: "Archivo subido correctamente" },
@@ -85,13 +84,13 @@ export const Implementation = () => {
   )
 }
 
-// Success toast example
-export const SuccessToast = Template.bind({})
-SuccessToast.args = {
+
+export const Playground = Template.bind({})
+Playground.args = {
   variant: "success",
   description: "¡Operación completada exitosamente! Los datos se han guardado correctamente.",
 }
-SuccessToast.parameters = {
+Playground.parameters = {
   docs: {
     description: {
       story: "Success variant created by the factory with green styling and CheckCircle icon."
@@ -99,47 +98,6 @@ SuccessToast.parameters = {
   }
 }
 
-// Alert/Error toast example
-export const AlertToast = Template.bind({})
-AlertToast.args = {
-  variant: "alert",
-  description: "Error: No se pudo conectar al servidor. Por favor, intenta nuevamente.",
-}
-AlertToast.parameters = {
-  docs: {
-    description: {
-      story: "Alert variant created by the factory with red styling and XCircle icon for error messages."
-    }
-  }
-}
-
-// Informative toast example
-export const InformativeToast = Template.bind({})
-InformativeToast.args = {
-  variant: "informative",
-  description: "Nueva versión disponible. Actualiza para obtener las últimas funcionalidades.",
-}
-InformativeToast.parameters = {
-  docs: {
-    description: {
-      story: "Informative variant created by the factory with blue styling and Info icon for general information."
-    }
-  }
-}
-
-// Warning toast example
-export const WarningToast = Template.bind({})
-WarningToast.args = {
-  variant: "warning", 
-  description: "Advertencia: La sesión expirará en 5 minutos. Guarda tu trabajo.",
-}
-WarningToast.parameters = {
-  docs: {
-    description: {
-      story: "Warning variant created by the factory with yellow styling and AlertTriangle icon for cautionary messages."
-    }
-  }
-}
 
 
 

@@ -62,7 +62,7 @@ export const Implementation = () => {
     )
 }
 
-export const ApiConnection: StoryObj<typeof PokemonTable> = {
+export const Playground: StoryObj<typeof PokemonTable> = {
   render: (args) => {
     const [input, setInput] = useState(args.pokemonName ?? "pikachu")
     const [pokemonName, setPokemonName] = useState(args.pokemonName ?? "pikachu")
