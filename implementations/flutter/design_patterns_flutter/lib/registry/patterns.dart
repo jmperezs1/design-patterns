@@ -1,3 +1,4 @@
+import 'package:design_patterns_flutter/patterns/creational/abstract_factory/abstract_factory_demo.dart';
 import 'package:design_patterns_flutter/patterns/creational/factory/code/code.dart';
 import 'package:design_patterns_flutter/patterns/creational/factory/code/demo.dart';
 import 'package:design_patterns_flutter/patterns/creational/factory/code/summary.dart';
@@ -61,7 +62,7 @@ final patterns = <PatternEntry>[
     id: 'abstract_factory',
     name: "Abstract Factory",
     category: "Creational",
-    builder: (_) => const Placeholder(),
+    builder: (_) => const NotificationsDualDemo(),
     markdown: '## Abstract Factory\nBreve explicación y diagrama…',
   ),
   PatternEntry(
