@@ -1,0 +1,12 @@
+{
+  "name": "design-patterns",
+  "private": true,
+  "workspaces": ["implementations/react"],
+  "scripts": {
+    "dev:web": "npm run dev -w implementations/react",
+    "build:web": "npm run build -w implementations/react",
+    "storybook": "npm run storybook -w implementations/react",
+    "flutter:run": "bash -lc 'cd implementations/flutter/design_patterns_flutter && flutter run'",
+    "rn:android_run": "bash -lc 'cd implementations/react-native/design-patterns-rn && npm run android'"
+  }
+}
