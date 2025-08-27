@@ -67,7 +67,6 @@ type Args = {
   description?: string;
 };
 
-// Función auxiliar para invocar el método correcto de la fábrica según la variante
 function renderByVariant(
   mode: Mode,
   variant: Variant,
@@ -95,7 +94,6 @@ const Template: StoryFn<Args> = (args) => {
     description: args.description,
   });
 
-  // Si el modo es toast, proveemos Provider + Viewport aquí (para no forzar a Banner a usarlo)
   if (args.mode === "toast") {
     return (
       <RadixToast.Provider swipeDirection="right">
@@ -113,6 +111,10 @@ const Template: StoryFn<Args> = (args) => {
 export const Implementation: StoryFn = () => {
   return (
     <div className="space-y-4">
+      <h3 className="text-lg font-semibold mb-4">Abstract Factory Pattern</h3>
+      <p className="text-sm text-gray-600 mb-4 text-justify">
+        Este módulo aplica el patrón **Abstract Factory** para crear familias de notificaciones con una interfaz genérica <code>NotificationFactory&lt;TProps&gt;</code> define `createSuccess`, `createAlert`, `createInformative` y `createWarning`; las fábricas concretas `bannerFactory` (delegando en `renderBanner`) y `toastFactory` (delegando en `renderToast`) generan componentes equivalentes por variante (`success`, `alert`, `informative`, `warning`) pero con presentación distinta; el tipado de props (`BannerProps`/`ToastProps`) asegura separación de responsabilidades y type-safety, el cliente consume una misma interfaz sin conocer implementaciones concretas, y el diseño facilita consistencia, testabilidad y escalabilidad al permitir agregar nuevas familias o variantes sin tocar el código cliente.
+      </p>
       <details className="rounded-lg border bg-white p-3 open:pb-3">
         <summary className="cursor-pointer select-none text-sm font-medium">
           Ver interfaces e implementaciones (notification-factory.tsx / toast-factory.tsx / banner-factory.tsx)
@@ -123,8 +125,6 @@ export const Implementation: StoryFn = () => {
           <CodeBlock code={bannerFactoryCode} title="banner-factory.tsx" />
         </div>
       </details>
-
-      <h3 className="text-lg font-semibold">Misma familia (success) en Banner y Toast</h3>
 
       {/* Banner success */}
       <div className="max-w-2xl">

@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-toast": "^1.2.14",
     "lucide-react": "^0.539.0",
     "react": "^19.1.0",

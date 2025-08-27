@@ -1,3 +1,4 @@
+import 'package:design_patterns_flutter/code/viewer.dart';
 import 'package:design_patterns_flutter/registry/patterns.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -44,27 +45,11 @@ class _ShowcaseState extends State<Showcase> {
             const SizedBox(height: 12),
             const Text('Código de ejemplo:'),
             ...selected!.codeSnippets.map(
-              (snippet) => Card(
-                clipBehavior: Clip.antiAlias,
-                margin: const EdgeInsets.only(bottom: 12),
-                child: ExpansionTile(
-                  title: Text(
-                    snippet.title,
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: SelectableText(
-                        snippet.code,
-                        style: const TextStyle(
-                          fontFamily: 'monospace',
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              (snippet) => DartCodeBlock(
+                key: ValueKey(snippet.title),
+                snippet: snippet,
+                readOnly: true,
+                height: 320,
               ),
             ),
             const SizedBox(height: 12),

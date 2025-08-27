@@ -1,14 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:code_text_field/code_text_field.dart';
+import 'package:flutter_highlight/themes/atom-one-dark.dart';
+import 'package:highlight/languages/dart.dart' as lang_dart;
+import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:design_patterns_flutter/registry/patterns.dart';
 
-class CodeBlock extends StatelessWidget {
+class DartCodeBlock extends StatefulWidget {
   final CodeSnippet snippet;
-  const CodeBlock({super.key, required this.snippet});
+  final bool readOnly;
+  final double height;
+
+  const DartCodeBlock({
+    super.key,
+    required this.snippet,
+    this.readOnly = true,
+    this.height = 320,
+  });
+
+  @override
+  State<DartCodeBlock> createState() => _DartCodeBlockState();
+}
+
+class _DartCodeBlockState extends State<DartCodeBlock> {
+  late CodeController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = CodeController(
+      text: widget.snippet.code,
+      language: lang_dart.dart,
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant DartCodeBlock oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.snippet.code != widget.snippet.code) {
+      _controller.text = widget.snippet.code;
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final codeTheme = atomOneDarkTheme; // o;r any light theme
 
     return Card(
       margin: const EdgeInsets.only(top: 12),
@@ -17,55 +59,18 @@ class CodeBlock extends StatelessWidget {
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
           title: Text(
-            snippet.title,
+            widget.snippet.title,
             style: const TextStyle(fontWeight: FontWeight.w600),
           ),
-          subtitle: Text(
-            snippet.language,
-            style: TextStyle(color: cs.onSurfaceVariant),
-          ),
+          subtitle: Text('Dart', style: TextStyle(color: cs.onSurfaceVariant)),
           childrenPadding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: cs.surfaceVariant.withOpacity(.5),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: cs.outlineVariant),
-              ),
-              padding: const EdgeInsets.fromLTRB(12, 12, 8, 8),
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: SelectableText(
-                      snippet.code,
-                      style: const TextStyle(
-                        fontFamily: 'monospace',
-                        fontSize: 12.5,
-                        height: 1.35,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: -4,
-                    child: IconButton(
-                      tooltip: 'Copiar',
-                      icon: const Icon(Icons.copy_rounded, size: 18),
-                      onPressed: () async {
-                        await Clipboard.setData(
-                          ClipboardData(text: snippet.code),
-                        );
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Código copiado')),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
+            HighlightView(
+              widget.snippet.code, // your Dart code string
+              language: 'dart',
+              theme: codeTheme,
+              padding: const EdgeInsets.all(12),
+              textStyle: const TextStyle(fontFamily: 'monospace', fontSize: 14),
             ),
           ],
         ),
