@@ -1,27 +1,15 @@
+import { FactoryDemo } from '../patterns/creational/factory';
 import { PatternEntry } from './types';
 import React from 'react';
-
-// Simple stub component for demo purposes
-function PatternStub({ name }: { name: string }) {
-  return <div style={{ padding: 16, color: '#555' }}>Demo for {name} pattern</div>;
-}
 
 export const patterns: PatternEntry[] = [
   {
     id: 'factory',
     name: 'Factory',
     category: 'Creational',
-    Component: () => <PatternStub name="Factory" />, 
+    Component: FactoryDemo, 
     markdown:
       'Centraliza la creación de objetos/elementos a partir de un *variant*, ocultando los detalles de construcción.',
-  },
-  {
-    id: 'singleton',
-    name: 'Singleton',
-    category: 'Creational',
-    Component: () => <PatternStub name="Singleton" />, 
-    markdown:
-      'Asegura que exista **una única instancia** y un punto de acceso global (e.g., servicio de API).',
   },
 ];
 

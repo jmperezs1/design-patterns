@@ -6,6 +6,6 @@ export type PatternEntry = {
   id: string;
   name: string;
   category: Category;
-  Component: React.ComponentType;    // demo component
-  markdown?: string;                 // short explanation (optional)
+  Component: React.ComponentType;
+  markdown?: string;             
 };
