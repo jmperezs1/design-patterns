@@ -1,7 +1,9 @@
+// src/screens/patterns/PatternScreen.tsx
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet } from 'react-native';
 import { patterns } from '../../registry/patterns';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { CodeBlock } from '../../components/code-block';
 
 type RootStackParamList = { Home: undefined; Pattern: { id: string } };
 type Props = NativeStackScreenProps<RootStackParamList, 'Pattern'>;
@@ -19,9 +21,28 @@ export const PatternScreen: React.FC<Props> = ({ route }) => {
           <Text style={{ color: '#555' }}>{entry.markdown}</Text>
         </View>
       )}
+
+      {/* Demo en vivo */}
       <View style={styles.card}>
         <Demo />
       </View>
+
+      {/* Código (varios snippets, como en Flutter) */}
+      {(entry.codeSnippets ?? []).length > 0 && (
+        <View style={styles.card}>
+          <Text style={[styles.h2, { marginBottom: 8 }]}>Código de ejemplo</Text>
+          {entry.codeSnippets!.map((snip, i) => (
+            <CodeBlock
+              key={`${snip.title}-${i}`}
+              title={snip.title}
+              code={snip.code}
+              language={snip.language ?? 'typescript'}
+              height={320}
+              initialOpen={i === 0} // abre el primero
+            />
+          ))}
+        </View>
+      )}
     </ScrollView>
   );
 };
