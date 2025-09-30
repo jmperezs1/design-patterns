@@ -1,7 +1,9 @@
 {
   "name": "design-patterns",
   "private": true,
-  "workspaces": ["implementations/react"],
+  "workspaces": [
+    "implementations/react"
+  ],
   "scripts": {
     "dev:web": "npm run dev -w implementations/react",
     "build:web": "npm run build -w implementations/react",
