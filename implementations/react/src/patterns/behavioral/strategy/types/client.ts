@@ -1,0 +1,1 @@
+export type ClientType = 'standard' | 'gold' | 'platinum' | 'vip';
