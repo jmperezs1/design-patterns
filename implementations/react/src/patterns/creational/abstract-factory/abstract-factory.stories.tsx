@@ -2,9 +2,8 @@
 "use client";
 
 import type { Meta, StoryFn } from "@storybook/react";
-import * as RadixToast from "@radix-ui/react-toast";
-import { toastFactory } from "./toast-factory";
-import { bannerFactory } from "./banner-factory";
+import { useState } from 'react';
+
 
 type Mode = "toast" | "banner";
 
@@ -13,7 +12,9 @@ import bannerFactoryCode from "./banner-factory.tsx?raw";
 import interfaceCode from "./notification-factory.tsx?raw";
 import { CodeBlock } from "../../../components/code-block";
 import type { Variant } from "./types/variants";
-import { useState } from "react";
+import { Callout } from '@radix-ui/themes';
+import { toastFactory } from './toast-factory';
+import { bannerFactory } from './banner-factory';
 
 export default {
   title: "Design Patterns/Creational/Abstract Factory",
@@ -60,54 +61,6 @@ export default {
   },
 } as Meta;
 
-type Args = {
-  mode: Mode;
-  variant: Variant;
-  title?: string;
-  description?: string;
-};
-
-function renderByVariant(
-  mode: Mode,
-  variant: Variant,
-  props: { title?: string; description?: string }
-) {
-  const f = mode === "toast" ? toastFactory : bannerFactory;
-
-  switch (variant) {
-    case "success":
-      return f.createSuccess(props);
-    case "alert":
-      return f.createAlert(props);
-    case "informative":
-      return f.createInformative(props);
-    case "warning":
-      return f.createWarning(props);
-    default:
-      return f.createInformative(props);
-  }
-}
-
-const Template: StoryFn<Args> = (args) => {
-  const element = renderByVariant(args.mode, args.variant, {
-    title: args.title,
-    description: args.description,
-  });
-
-  if (args.mode === "toast") {
-    return (
-      <RadixToast.Provider swipeDirection="right">
-        {element}
-        <RadixToast.Viewport className="fixed top-5 right-5 flex flex-col gap-2 w-80 z-50 list-none pl-0" />
-      </RadixToast.Provider>
-    );
-  }
-
-  // Banner no necesita Provider
-  return <div className="max-w-2xl">{element}</div>;
-};
-
-
 export const Implementation: StoryFn = () => {
   return (
     <div className="space-y-4">
@@ -115,6 +68,12 @@ export const Implementation: StoryFn = () => {
       <p className="text-sm text-gray-600 mb-4 text-justify">
         Este módulo aplica el patrón **Abstract Factory** para crear familias de notificaciones con una interfaz genérica <code>NotificationFactory&lt;TProps&gt;</code> define `createSuccess`, `createAlert`, `createInformative` y `createWarning`; las fábricas concretas `bannerFactory` (delegando en `renderBanner`) y `toastFactory` (delegando en `renderToast`) generan componentes equivalentes por variante (`success`, `alert`, `informative`, `warning`) pero con presentación distinta; el tipado de props (`BannerProps`/`ToastProps`) asegura separación de responsabilidades y type-safety, el cliente consume una misma interfaz sin conocer implementaciones concretas, y el diseño facilita consistencia, testabilidad y escalabilidad al permitir agregar nuevas familias o variantes sin tocar el código cliente.
       </p>
+      <Callout.Root className="mb-2">
+        <Callout.Icon>💡</Callout.Icon>
+        <Callout.Text>
+          <strong>Idea clave:</strong> Cambiar entre <code>toast</code> y <code>banner</code> solo sustituye la fábrica concreta; el código cliente permanece igual porque programa contra <code>NotificationFactory</code>. Agregar una nueva familia (por ejemplo, <em>modal</em>) no rompe las existentes.
+        </Callout.Text>
+      </Callout.Root>
       <details className="rounded-lg border bg-white p-3 open:pb-3">
         <summary className="cursor-pointer select-none text-sm font-medium">
           Ver interfaces e implementaciones (notification-factory.tsx / toast-factory.tsx / banner-factory.tsx)
@@ -125,21 +84,6 @@ export const Implementation: StoryFn = () => {
           <CodeBlock code={bannerFactoryCode} title="banner-factory.tsx" />
         </div>
       </details>
-
-      {/* Banner success */}
-      <div className="max-w-2xl">
-        {bannerFactory.createSuccess({
-          description: "Perfil guardado correctamente.",
-        })}
-      </div>
-
-      {/* Toast success */}
-      <RadixToast.Provider swipeDirection="right">
-        {toastFactory.createSuccess({
-          description: "Perfil guardado correctamente (toast).",
-        })}
-        <RadixToast.Viewport className="fixed top-5 right-5 flex flex-col gap-2 w-80 z-50 list-none pl-0" />
-      </RadixToast.Provider>
     </div>
   );
 };
@@ -151,58 +95,48 @@ Implementation.parameters = {
     },
   },
 };
+// Playground interactivo (elige producto + variante)
+interface PlaygroundArgs {
+  mode: Mode;
+  variant: Variant;
+  title?: string;
+  description?: string;
+}
 
-export const VariantsBannerFactory: StoryFn = () => (
-  <div className="space-y-3 max-w-2xl">
-    {bannerFactory.createSuccess({ description: "Operación exitosa." })}
-    {bannerFactory.createAlert({ description: "Error al guardar cambios." })}
-    {bannerFactory.createInformative({ description: "Nueva versión disponible." })}
-    {bannerFactory.createWarning({ description: "Tu sesión expirará pronto." })}
-  </div>
-);
-
-export const VariantsToastFactory: StoryFn = () => {
-  const variants = [
-    { fn: toastFactory.createSuccess, label: "Operación exitosa." },
-    { fn: toastFactory.createAlert, label: "Error al guardar cambios." },
-    { fn: toastFactory.createInformative, label: "Nueva versión disponible." },
-    { fn: toastFactory.createWarning, label: "Tu sesión expirará pronto." },
-  ];
-
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
+export const Playground: StoryFn<PlaygroundArgs> = (args) => {
+  const [open, setOpen] = useState(true);
+  const factory = args.mode === 'toast' ? toastFactory : bannerFactory;
+  const element = (() => {
+    switch (args.variant) {
+      case 'success': return factory.createSuccess({ title: args.title, description: args.description, open, onOpenChange: setOpen } as any);
+      case 'alert': return factory.createAlert({ title: args.title, description: args.description, open, onOpenChange: setOpen } as any);
+      case 'informative': return factory.createInformative({ title: args.title, description: args.description, open, onOpenChange: setOpen } as any);
+      case 'warning': return factory.createWarning({ title: args.title, description: args.description, open, onOpenChange: setOpen } as any);
+      default: return null;
+    }
+  })();
   return (
-    <RadixToast.Provider swipeDirection="right">
-      <div className="space-y-2">
-        {variants.map((v, i) => (
-          <button
-            key={i}
-            className={`p-3 m-2 rounded text-white cursor-pointer ${v.fn === toastFactory.createSuccess ? "bg-green-500" : v.fn === toastFactory.createAlert ? "bg-red-500" : v.fn === toastFactory.createInformative ? "bg-blue-500" : "bg-yellow-500"}`}
-            onClick={() => setOpenIndex(i)}
-          >
-            Mostrar {v.label}
-          </button>
-        ))}
-      </div>
-      {openIndex !== null &&
-        variants[openIndex].fn({
-          description: variants[openIndex].label,
-          open: true,
-          onOpenChange: (open: boolean) => {
-            if (!open) setOpenIndex(null);
-          },
-        })}
-      <RadixToast.Viewport className="fixed top-5 right-5 flex flex-col gap-2 w-80 z-50 list-none pl-0" />
-    </RadixToast.Provider>
+    <div className="space-y-4">
+      <p className="text-sm text-gray-600">Interactúa cambiando <code>mode</code> y <code>variant</code>. La historia reutiliza la misma interfaz <code>NotificationFactory</code> para producir componentes distintos.</p>
+      <div>{element}</div>
+      {args.mode === 'toast' && (
+        <p className="text-xs text-gray-500">Los toasts incluyen su propio <code>Provider</code> y desaparecen al cerrar.</p>
+      )}
+    </div>
   );
 };
-
-export const Playground = Template.bind({});
 Playground.args = {
-  mode: "toast",
-  variant: "success",
-  title: "",
-  description: "Operación completada exitosamente.",
+  mode: 'toast',
+  variant: 'success',
+  title: '',
+  description: 'Operación completada exitosamente.',
+};
+Playground.parameters = {
+  docs: {
+    description: {
+      story: 'Playground para alternar entre las familias de productos creadas por la Abstract Factory.',
+    },
+  },
 };
 
 
