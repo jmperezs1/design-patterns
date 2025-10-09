@@ -42,11 +42,11 @@ export default function CommandListRadix() {
     <Box p="4" style={{ maxWidth: 720, margin: "0 auto" }}>
       <Card variant="surface">
         <Flex align="center" justify="between" mb="3" wrap="wrap" gap="3">
-          <Text size="5" weight="bold">Command Pattern: Items</Text>
+          <Text size="5" weight="bold">Command Pattern: Ítems</Text>
           <Flex gap="2" align="center">
-            <Badge variant="soft">{device.size()} kind(s)</Badge>
+            <Badge variant="soft">{device.size()} tipo(s)</Badge>
             <Button color="crimson" variant="soft" onClick={doClear} disabled={rows.length === 0}>
-              Clear all
+              Limpiar todo
             </Button>
           </Flex>
         </Flex>
@@ -64,16 +64,16 @@ export default function CommandListRadix() {
         <Table.Root variant="surface">
           <Table.Header>
             <Table.Row>
-              <Table.ColumnHeaderCell>Item</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell align="center">Qty</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell align="right">Actions</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Ítem</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell align="center">Cant.</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell align="right">Acciones</Table.ColumnHeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             {rows.length === 0 && (
               <Table.Row>
                 <Table.Cell colSpan={3}>
-                  <Text color="gray">No items yet. Use the buttons above to add.</Text>
+                  <Text color="gray">Aún no hay ítems. Usa los botones de arriba para agregar.</Text>
                 </Table.Cell>
               </Table.Row>
             )}

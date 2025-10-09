@@ -1,3 +1,3 @@
-const CATALOG = ["Apple", "Orange", "Banana", "Grapes", "Mango"];
+const CATALOG = ["Manzana", "Naranja", "Banana", "Uvas", "Mango"];
 
 export default CATALOG;

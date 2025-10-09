@@ -24,7 +24,7 @@ export const Implementation: StoryFn = () => {
     <Box className="space-y-8" p="3">
       {/* Header */}
       <Flex align="center" gap="3" className="flex-wrap">
-        <h3 className="text-2xl font-semibold tracking-tight">Prototype Pattern — Email Templates</h3>
+        <h3 className="text-2xl font-semibold tracking-tight">Prototype Pattern</h3>
         <Badge variant="soft" color="indigo">Creacional</Badge>
       </Flex>
 
