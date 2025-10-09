@@ -1,8 +1,8 @@
-
 "use client";
 
 import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from 'react';
+import { Box, Flex, Separator, Badge } from '@radix-ui/themes';
 
 
 type Mode = "toast" | "banner";
@@ -12,7 +12,6 @@ import bannerFactoryCode from "./banner-factory.tsx?raw";
 import interfaceCode from "./notification-factory.tsx?raw";
 import { CodeBlock } from "../../../components/code-block";
 import type { Variant } from "./types/variants";
-import { Callout } from '@radix-ui/themes';
 import { toastFactory } from './toast-factory';
 import { bannerFactory } from './banner-factory';
 
@@ -63,28 +62,88 @@ export default {
 
 export const Implementation: StoryFn = () => {
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold mb-4">Abstract Factory Pattern</h3>
-      <p className="text-sm text-gray-600 mb-4 text-justify">
-        Este módulo aplica el patrón **Abstract Factory** para crear familias de notificaciones con una interfaz genérica <code>NotificationFactory&lt;TProps&gt;</code> define `createSuccess`, `createAlert`, `createInformative` y `createWarning`; las fábricas concretas `bannerFactory` (delegando en `renderBanner`) y `toastFactory` (delegando en `renderToast`) generan componentes equivalentes por variante (`success`, `alert`, `informative`, `warning`) pero con presentación distinta; el tipado de props (`BannerProps`/`ToastProps`) asegura separación de responsabilidades y type-safety, el cliente consume una misma interfaz sin conocer implementaciones concretas, y el diseño facilita consistencia, testabilidad y escalabilidad al permitir agregar nuevas familias o variantes sin tocar el código cliente.
+    <Box className="space-y-8 max-w-5xl mx-auto" p="3">
+      {/* Header */}
+      <Flex align="center" gap="3" className="flex-wrap">
+        <h3 className="text-2xl font-semibold tracking-tight">Abstract Factory Pattern</h3>
+        <Badge color="indigo" variant="soft">Creacional</Badge>
+        </Flex>
+
+      {/* Resumen */}
+      <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+        <strong>Abstract Factory</strong> Es un patrón de diseño creacional que permite crear familias de objetos relacionados sin especificar sus clases concretas. El objetivo es evitar que el código de cliente dependa de clases específicas. En su lugar, trabaja con interfaces o tipos abstractos, delegando la creación a una fábrica especializada.
       </p>
-      <Callout.Root className="mb-2">
-        <Callout.Icon>💡</Callout.Icon>
-        <Callout.Text>
-          <strong>Idea clave:</strong> Cambiar entre <code>toast</code> y <code>banner</code> solo sustituye la fábrica concreta; el código cliente permanece igual porque programa contra <code>NotificationFactory</code>. Agregar una nueva familia (por ejemplo, <em>modal</em>) no rompe las existentes.
-        </Callout.Text>
-      </Callout.Root>
-      <details className="rounded-lg border bg-white p-3 open:pb-3">
-        <summary className="cursor-pointer select-none text-sm font-medium">
-          Ver interfaces e implementaciones (notification-factory.tsx / toast-factory.tsx / banner-factory.tsx)
-        </summary>
-        <div className="mt-3 space-y-3">
-          <CodeBlock code={interfaceCode} title="notification-factory.tsx" />
-          <CodeBlock code={toastFactoryCode} title="toast-factory.tsx" />
-          <CodeBlock code={bannerFactoryCode} title="banner-factory.tsx" />
+
+      <Separator size="4" />
+
+      {/* General Problem & Solution */}
+      <section className="grid md:grid-cols-2 gap-6">
+        <div className="rounded-xl border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40 p-5 shadow-sm">
+          <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-300 mb-3">Problemática General</h4>
+            <p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200 mb-2">Cuando un sistema debe generar distintos tipos de componentes o productos según el contexto (por ejemplo, diferentes interfaces, temas o plataformas), los desarrolladores suelen recurrir a condicionales y referencias directas a clases concretas, lo que genera código rígido, difícil de mantener y prácticamente imposible de extender sin modificar múltiples partes del sistema.</p>
         </div>
-      </details>
-    </div>
+        <div className="rounded-xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 p-5 shadow-sm">
+          <h4 className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300 mb-3">Solución General</h4>
+          <p className="text-xs sm:text-sm text-emerald-900 dark:text-emerald-200 mb-2">
+            El patrón Abstract Factory plantea la creación de una capa de fábricas abstractas que encapsulan la lógica de instanciación, permitiendo reemplazar de forma transparente familias completas de objetos sin alterar el código que los utiliza.
+          </p>
+        </div>
+      </section>
+
+      {/* Specific Case Wrapper */}
+      <section className="rounded-2xl border border-gray-300 dark:border-gray-700/80 bg-white dark:bg-zinc-900/70 p-6 shadow-sm space-y-8">
+        <header className="flex items-center gap-3 flex-wrap">
+          <h4 className="text-lg font-semibold tracking-tight">Caso Específico: Sistema de Notificaciones</h4>
+          <Badge variant="soft" color="purple">Ejemplo Aplicado</Badge>
+        </header>
+
+        {/* Specific Problem */}
+        <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-zinc-800/60 p-5">
+          <h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Problemática Específica</h5>
+          <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600 dark:text-gray-300">
+            <li>Dos presentaciones que dependen del gusto del usuario: <code>Toast</code> y <code>Banner</code>.</li>
+            <li>Comparten mismas variantes (<code>success</code>, <code>alert</code>, <code>informative</code>, <code>warning</code>).</li>
+            <li>Props diferentes por presentación pero intención funcional igual.</li>
+          </ul>
+        </div>
+
+        {/* Specific Solution */}
+        <div className="rounded-xl border border-indigo-300 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/40 p-5">
+          <h5 className="text-sm font-semibold uppercase tracking-wide text-indigo-600 dark:text-indigo-300 mb-3">Solución Específica</h5>
+          <p className="text-sm text-indigo-900 dark:text-indigo-200">
+            Se define <code>NotificationFactory&lt;TProps&gt;</code> con métodos para cada variante. Las fábricas concretas <code>toastFactory</code> y <code>bannerFactory</code> devuelven componentes tipados que encapsulan diferencias estructurales y de props, preservando un contrato uniforme para el consumidor.
+          </p>
+        </div>
+
+        {/* UML */}
+        <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+          <h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+          <figure>
+            <img src="/img/abstract-factory.png" loading="lazy" alt="Abstract Factory UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" />
+            <figcaption className="mt-2 text-[11px] text-gray-500 dark:text-gray-400 tracking-wide">
+              Estructura aplicada al caso: interfaz, fábricas concretas y productos renderizados.
+            </figcaption>
+          </figure>
+        </div>
+
+        {/* Source Code */}
+        <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+          <h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Código Fuente</h5>
+          <details className="group rounded-lg border bg-white dark:bg-zinc-800 open:shadow-inner">
+            <summary className="cursor-pointer select-none text-sm font-medium px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-violet-500/10 dark:from-indigo-400/10 dark:to-violet-400/10 border-b flex items-center gap-2">
+              <span className="text-indigo-600 dark:text-indigo-300 group-open:font-semibold">Ver interfaces e implementaciones</span>
+              <span className="ml-auto text-[10px] uppercase tracking-wide text-gray-400 group-open:hidden">Expandir</span>
+              <span className="ml-auto text-[10px] uppercase tracking-wide text-gray-400 hidden group-open:inline">Colapsar</span>
+            </summary>
+            <div className="p-4 space-y-4">
+              <CodeBlock code={interfaceCode} title="notification-factory.tsx" />
+              <CodeBlock code={toastFactoryCode} title="toast-factory.tsx" />
+              <CodeBlock code={bannerFactoryCode} title="banner-factory.tsx" />
+            </div>
+          </details>
+        </div>
+      </section>
+    </Box>
   );
 };
 Implementation.parameters = {
@@ -105,6 +164,18 @@ interface PlaygroundArgs {
 
 export const Playground: StoryFn<PlaygroundArgs> = (args) => {
   const [open, setOpen] = useState(true);
+  const [lastSignature, setLastSignature] = useState<string>("");
+
+  // Reabrir automáticamente al cambiar combinación mode+variant
+  const signature = `${args.mode}::${args.variant}`;
+  if (signature !== lastSignature) {
+    setLastSignature(signature);
+    if (args.mode === 'toast') {
+      // re-open toast on variant/mode change
+      setTimeout(() => setOpen(true), 0);
+    }
+  }
+
   const factory = args.mode === 'toast' ? toastFactory : bannerFactory;
   const element = (() => {
     switch (args.variant) {
@@ -117,11 +188,18 @@ export const Playground: StoryFn<PlaygroundArgs> = (args) => {
   })();
   return (
     <div className="space-y-4">
-      <p className="text-sm text-gray-600">Interactúa cambiando <code>mode</code> y <code>variant</code>. La historia reutiliza la misma interfaz <code>NotificationFactory</code> para producir componentes distintos.</p>
-      <div>{element}</div>
+      <div className="rounded-md border border-indigo-200 dark:border-indigo-800 bg-indigo-50/70 dark:bg-indigo-950/30 p-3 text-md leading-relaxed text-indigo-900 dark:text-indigo-200">
+        <strong>Cómo interactuar:</strong> Cambia los valores <code>mode</code> y <code>variant</code> usando el panel <em>Controls</em> que es el primer boton en la parte superior derecha. Si el toast se cerró, pulsa el botón <em>Reabrir Toast</em> abajo. <br />
+        Cada cambio fuerza la recreación de la variante sin modificar el flujo del cliente.
+      </div>
       {args.mode === 'toast' && (
-        <p className="text-xs text-gray-500">Los toasts incluyen su propio <code>Provider</code> y desaparecen al cerrar.</p>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="inline-flex items-center rounded-md border border-indigo-300 dark:border-indigo-700 bg-white/70 dark:bg-zinc-800 px-3 py-1.5 text-md font-medium text-indigo-700 dark:text-indigo-200 hover:bg-indigo-50 dark:hover:bg-zinc-700 transition"
+        >Reabrir Toast</button>
       )}
+      <div>{element}</div>
     </div>
   );
 };

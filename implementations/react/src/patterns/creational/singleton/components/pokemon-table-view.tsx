@@ -8,7 +8,7 @@ export function PokemonTableView({
 
 ) {
   return (
-    <div className="w-full max-w-4xl rounded-xl border p-6 shadow-sm">
+    <div className="w-full rounded-xl border p-6 shadow-sm">
       <div className="mb-6 flex items-center gap-4">
         <img 
           src={pokemon.sprite} 
