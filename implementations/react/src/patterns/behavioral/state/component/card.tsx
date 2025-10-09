@@ -33,7 +33,7 @@ export default function TicketCardRadix() {
   const isNew = ticket.state instanceof NewState;
   const isInProgress = ticket.state instanceof InProgressState;
   const isClosed = ticket.state instanceof ClosedState;
-  const stateName = isNew ? 'New' : isInProgress ? 'InProgress' : isClosed ? 'Closed' : 'Unknown';
+  const stateName = isNew ? 'Nuevo' : isInProgress ? 'En progreso' : isClosed ? 'Cerrado' : 'Desconocido';
 
   const handleAddTask = () => {
     const t = taskInput.trim();
@@ -81,17 +81,17 @@ export default function TicketCardRadix() {
     total > 0 ? Math.round((doneCount / total) * 100) : 0;
 
   const handleLabel = isNew
-    ? 'Handle → Commit title & tasks'
+    ? 'Handle → Confirmar título y tareas'
     : isInProgress
-    ? 'Handle → Check next task'
-    : 'Handle → Validate & stamp closure';
+    ? 'Handle → Marcar siguiente tarea'
+    : 'Handle → Validar y cerrar ticket';
 
   return (
     <Box p="4" style={{ maxWidth: 880, margin: '0 auto' }}>
       <Card variant="surface">
         <Flex direction="column" gap="3">
           <Flex align="center" justify="between">
-            <Text size="5" weight="bold">Support Ticket</Text>
+            <Text size="5" weight="bold">Ticket de soporte</Text>
             <Badge variant="soft">{stateName}</Badge>
           </Flex>
 
@@ -102,12 +102,12 @@ export default function TicketCardRadix() {
           {isNew ? (
             <>
               <Text size="2" color="gray">
-                Prepare the ticket, then press <b>Handle</b> to commit and start.
+                Prepara el ticket y presiona <b>Handle</b> para confirmarlo e iniciar.
               </Text>
 
               <Grid columns={{ initial: '1', sm: '2' }} gap="3">
                 <TextField.Root
-                  placeholder="Title"
+                  placeholder="Título"
                   value={titleInput}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitleInput(e.target.value)}
                 >
@@ -116,12 +116,12 @@ export default function TicketCardRadix() {
                 <Flex gap="2">
                   <TextField.Root 
                     style={{ flex: 1 }}
-                    placeholder="Add task"
+                    placeholder="Agregar tarea"
                     value={taskInput}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTaskInput(e.target.value)}
                     onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleAddTask()}
                   />
-                  <Button variant="soft" onClick={handleAddTask}>Add</Button>
+                  <Button variant="soft" onClick={handleAddTask}>Agregar</Button>
                 </Flex>
               </Grid>
 
@@ -129,15 +129,15 @@ export default function TicketCardRadix() {
                 <Table.Header>
                   <Table.Row>
                     <Table.ColumnHeaderCell width="60">#</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>Planned task</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell align="right">Actions</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>Tarea planificada</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell align="right">Acciones</Table.ColumnHeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
                   {stagedTasks.length === 0 ? (
                     <Table.Row>
                       <Table.Cell colSpan={3}>
-                        <Text color="gray">No tasks yet</Text>
+                        <Text color="gray">Aún no hay tareas</Text>
                       </Table.Cell>
                     </Table.Row>
                   ) : (
@@ -151,7 +151,7 @@ export default function TicketCardRadix() {
                             color="crimson"
                             onClick={() => handleRemoveTask(i)}
                           >
-                            Remove
+                            Quitar
                           </Button>
                         </Table.Cell>
                       </Table.Row>
@@ -165,7 +165,7 @@ export default function TicketCardRadix() {
               <Flex align="center" justify="between" wrap="wrap" gap="2">
                 <Text size="3" weight="bold">{ticket.title}</Text>
                 <Text size="2" color="gray">
-                  {doneCount}/{total} tasks done ({progress}%)
+                  {doneCount}/{total} tareas completadas ({progress}%)
                 </Text>
               </Flex>
 
@@ -173,8 +173,8 @@ export default function TicketCardRadix() {
                 <Table.Header>
                   <Table.Row>
                     <Table.ColumnHeaderCell width="60">#</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>Task</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell align="center">Done</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>Tarea</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell align="center">Hecho</Table.ColumnHeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -190,7 +190,7 @@ export default function TicketCardRadix() {
 
               {ticket.closedAt && (
                 <Text size="2" color="gray">
-                  Closed at: {ticket.closedAt.toLocaleString()}
+                  Cerrado: {ticket.closedAt.toLocaleString()}
                 </Text>
               )}
             </>
@@ -201,7 +201,7 @@ export default function TicketCardRadix() {
           <Flex gap="2" wrap="wrap">
             <Button onClick={handleRequest}>{handleLabel}</Button>
             <Button variant="soft" onClick={handleReset} disabled={isNew}>
-              Reset → New
+              Reset → Nuevo
             </Button>
           </Flex>
         </Flex>
