@@ -56,22 +56,22 @@ export default function BridgeDemoRadix() {
     <Box p="4" style={{ maxWidth: 900, margin: "0 auto" }}>
       <Card variant="surface">
         <Flex direction="column" gap="3">
-          <Text size="5" weight="bold">Bridge Pattern: Reports × Exporters</Text>
+          <Text size="5" weight="bold">Bridge Pattern: Reportes × Exportadores</Text>
 
           <Flex gap="3" wrap="wrap">
             <Flex align="center" gap="2">
-              <Text size="2" color="gray">Report</Text>
+              <Text size="2" color="gray">Reporte</Text>
               <Select.Root value={reportKind} onValueChange={(v) => setReportKind(v as ReportKind)}>
                 <Select.Trigger />
                 <Select.Content>
-                  <Select.Item value="orders">Orders</Select.Item>
-                  <Select.Item value="inventory">Inventory</Select.Item>
+                  <Select.Item value="orders">Órdenes</Select.Item>
+                  <Select.Item value="inventory">Inventario</Select.Item>
                 </Select.Content>
               </Select.Root>
             </Flex>
 
             <Flex align="center" gap="2">
-              <Text size="2" color="gray">Exporter</Text>
+              <Text size="2" color="gray">Exportador</Text>
               <Select.Root value={exporterKind} onValueChange={(v) => setExporterKind(v as ExporterKind)}>
                 <Select.Trigger />
                 <Select.Content>
@@ -81,12 +81,12 @@ export default function BridgeDemoRadix() {
               </Select.Root>
             </Flex>
 
-            <Button onClick={onExport}>Export</Button>
+            <Button onClick={onExport}>Exportar</Button>
           </Flex>
 
           <Separator my="2" />
 
-          <Text size="2" color="gray">Preview</Text>
+          <Text size="2" color="gray">Vista previa</Text>
           <TextArea value={output} onChange={() => {}} rows={14} />
         </Flex>
       </Card>

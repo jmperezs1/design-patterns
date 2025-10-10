@@ -59,9 +59,9 @@ export function ClientTableRadix({ api, pageSize = 10 }: Props) {
     <Box p="3" className="rounded-2xl border">
       <Flex align="center" gap="4" wrap="wrap" mb="4">
         <TextField.Root
-          aria-label="Search users"
+          aria-label="Buscar usuarios"
           className="max-w-[340px]"
-          placeholder="Search id, name, email…"
+          placeholder="Buscar id, nombre, email…"
           size="2"
             /* surface: subtle background; could use 'soft' for more emphasis */
           variant="surface"
@@ -78,7 +78,7 @@ export function ClientTableRadix({ api, pageSize = 10 }: Props) {
         </TextField.Root>
 
         <Text size="2" color="gray">
-          {loading ? 'Loading…' : `${filtered.length} result(s)`}
+          {loading ? 'Cargando…' : `${filtered.length} resultado(s)`}
         </Text>
 
   <Flex ml="auto" align="center" gap="3">
@@ -88,17 +88,17 @@ export function ClientTableRadix({ api, pageSize = 10 }: Props) {
             disabled={pageSafe === 1 || loading}
           >
             <ChevronLeftIcon />
-            Prev
+            Anterior
           </Button>
           <Text size="2">
-            Page {pageSafe} / {totalPages}
+            Página {pageSafe} / {totalPages}
           </Text>
           <Button
             variant="soft"
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={pageSafe === totalPages || loading}
           >
-            Next
+            Siguiente
             <ChevronRightIcon />
           </Button>
         </Flex>
@@ -110,7 +110,7 @@ export function ClientTableRadix({ api, pageSize = 10 }: Props) {
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell style={{ width: 120 }}>ID</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Nombre</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
@@ -120,8 +120,8 @@ export function ClientTableRadix({ api, pageSize = 10 }: Props) {
             ? Array.from({ length: 6 }).map((_, i) => (
                 <Table.Row key={i}>
                   <Table.Cell>—</Table.Cell>
-                  <Table.Cell>Loading…</Table.Cell>
-                  <Table.Cell>Loading…</Table.Cell>
+                  <Table.Cell>Cargando…</Table.Cell>
+                  <Table.Cell>Cargando…</Table.Cell>
                 </Table.Row>
               ))
             : pageRows.map((u) => (
@@ -136,7 +136,7 @@ export function ClientTableRadix({ api, pageSize = 10 }: Props) {
 
       {!loading && pageRows.length === 0 && (
         <Flex justify="center" py="5">
-          <Text color="gray">No results</Text>
+          <Text color="gray">Sin resultados</Text>
         </Flex>
       )}
 

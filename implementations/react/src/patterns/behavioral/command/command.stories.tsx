@@ -35,8 +35,7 @@ export const Implementation: StoryFn = () => {
 
 			{/* Resumen */}
 			<p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-				<strong>Command</strong> desacopla el emisor de la acción de su ejecución. Una petición se encapsula en un objeto
-				comando, que un <em>Invoker</em> puede ejecutar, programar o deshacer; la lógica concreta vive en el <em>Receiver</em>.
+				<strong>Command</strong> encapsula una operación (una acción) dentro de un objeto independiente, permitiendo ejecutar, deshacer o almacenar comandos sin que el invocador conozca los detalles de cómo se realiza la acción.
 			</p>
 
 			<Separator size="4" />
@@ -46,18 +45,23 @@ export const Implementation: StoryFn = () => {
 				<div className="rounded-xl border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40 p-5 shadow-sm space-y-3">
 					<h4 className="text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-300">Problemática General</h4>
 					<p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200">
-						Botones o eventos en la UI suelen disparar acciones heterogéneas y con efectos colaterales. Si la UI llama
-						directamente a la lógica, es difícil reusar, programar o deshacer acciones.
+						Cuando se quiere ejecutar acciones de forma desacoplada —por ejemplo, programarlas, ponerlas en cola, deshacerlas (undo), o registrar historial— pero el código que invoca la acción está directamente conectado a la implementación concreta, lo que impide flexibilidad o control sobre esas operaciones.
 					</p>
 				</div>
 				<div className="rounded-xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 p-5 shadow-sm space-y-3">
 					<h4 className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">Solución General</h4>
 					<p className="text-xs sm:text-sm text-emerald-900 dark:text-emerald-200">
-						Modelar cada acción como un <em>Command</em> con una operación <code>execute()</code> (y opcional <code>undo()</code>). Un
-						<em>Invoker</em> orquesta cuál ejecutar y un <em>Receiver</em> concentra el estado y la lógica.
+						Convertir cada acción en un “comando” con una interfaz común (execute, opcionalmente undo), permitiendo que el invocador reciba y ejecute comandos sin conocer cómo están implementados, facilitando su almacenamiento, combinación o reversión
 					</p>
 				</div>
 			</section>
+
+			<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/real_command.png" alt="Command UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+				</div>
 
 			{/* Caso Específico */}
 			<section className="rounded-2xl border border-gray-300 dark:border-gray-700/80 bg-white dark:bg-zinc-900/70 p-6 shadow-sm space-y-8">

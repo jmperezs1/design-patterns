@@ -38,8 +38,7 @@ export const Implementation: StoryFn = () => {
 
 			{/* Resumen */}
 			<p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-				<strong>Strategy</strong> permite elegir y cambiar algoritmos en tiempo de ejecución a través de una interfaz común.
-				El cliente utiliza un <em>Context</em> que delega el cálculo a la estrategia activa.
+				<strong>Strategy</strong> permite cambiar el comportamiento de un sistema en tiempo de ejecución eligiendo entre distintas estrategias (algoritmos) intercambiables bajo una misma interfaz.
 			</p>
 
 			<Separator size="4" />
@@ -49,18 +48,23 @@ export const Implementation: StoryFn = () => {
 				<div className="rounded-xl border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40 p-5 shadow-sm space-y-3">
 					<h4 className="text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-300">Problemática General</h4>
 					<p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200">
-						Si el precio depende de muchas reglas, un <em>if-else/switch</em> gigante hace difícil extender o probar
-						variantes. Cambiar de regla implica tocar el mismo bloque de código.
+						Cuando un sistema necesita realizar una misma tarea pero con múltiples formas posibles de hacerlo (por ejemplo distintos cálculos, métodos de pago o reglas de validación), el código termina lleno de condicionales (<em>if-else/switch</em>) difíciles de mantener y extender.
 					</p>
 				</div>
 				<div className="rounded-xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 p-5 shadow-sm space-y-3">
 					<h4 className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">Solución General</h4>
 					<p className="text-xs sm:text-sm text-emerald-900 dark:text-emerald-200">
-						Definir una interfaz <code>Strategy</code> y múltiples implementaciones. Un <em>Context</em> mantiene una referencia
-						a la estrategia y permite reemplazarla sin afectar al resto del sistema.
+						Encapsular cada comportamiento en una estrategia independiente que implemente una interfaz común, y permitir que el cliente seleccione o cambie la estrategia en tiempo de ejecución mediante composición en lugar de condicionales.
 					</p>
 				</div>
 			</section>
+
+			<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/real_strategy.png" alt="Strategy UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+				</div>
 
 			{/* Caso Específico */}
 			<section className="rounded-2xl border border-gray-300 dark:border-gray-700/80 bg-white dark:bg-zinc-900/70 p-6 shadow-sm space-y-8">
