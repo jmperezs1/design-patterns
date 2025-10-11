@@ -3,7 +3,7 @@ import 'package:code_text_field/code_text_field.dart';
 import 'package:flutter_highlight/themes/atom-one-dark.dart';
 import 'package:highlight/languages/dart.dart' as lang_dart;
 import 'package:flutter_highlight/flutter_highlight.dart';
-import 'package:design_patterns_flutter/registry/patterns.dart';
+import 'package:design_patterns_flutter/code/snippet.dart';
 
 class DartCodeBlock extends StatefulWidget {
   final CodeSnippet snippet;

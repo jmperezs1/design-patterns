@@ -1,7 +1,5 @@
-import 'package:design_patterns_flutter/code/viewer.dart';
 import 'package:design_patterns_flutter/registry/patterns.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 
 const _categoryIcons = <String, IconData>{
   'Creational': Icons.build_circle_rounded,
@@ -31,38 +29,7 @@ class _ShowcaseState extends State<Showcase> {
             tooltip: 'Back',
           ),
         ),
-        body: ListView(
-          padding: const EdgeInsets.all(12),
-          children: [
-            if (selected!.markdown != null)
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: MarkdownBody(data: selected!.markdown!),
-                ),
-              ),
-            const SizedBox(height: 12),
-            const Text('Código de ejemplo:'),
-            ...selected!.codeSnippets.map(
-              (snippet) => DartCodeBlock(
-                key: ValueKey(snippet.title),
-                snippet: snippet,
-                readOnly: true,
-                height: 320,
-              ),
-            ),
-            const SizedBox(height: 12),
-            const Text('Ejemplo:'),
-            Card(
-              clipBehavior: Clip.antiAlias,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Builder(builder: selected!.builder),
-              ),
-            ),
-          ],
-        ),
+        body: Builder(builder: selected!.builder),
       );
     }
 
