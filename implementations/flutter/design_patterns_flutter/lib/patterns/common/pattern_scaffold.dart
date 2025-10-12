@@ -113,9 +113,23 @@ class PatternSection extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(12),
+        gradient: LinearGradient(
+          colors: [
+            Theme.of(context).cardColor,
+            Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.35),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(color: cs.outlineVariant),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 10,
+            offset: const Offset(0, 6),
+            color: Colors.black.withOpacity(0.04),
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -123,13 +137,15 @@ class PatternSection extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w700,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w800,
               color: cs.primary,
-              letterSpacing: .2,
+              letterSpacing: .3,
             ),
           ),
           const SizedBox(height: 8),
+          Container(height: 1, color: cs.outlineVariant.withOpacity(0.6)),
+          const SizedBox(height: 12),
           child,
         ],
       ),
@@ -177,6 +193,81 @@ class PatternTemplate extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Encabezado moderno con gradiente
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [cs.primaryContainer, cs.secondaryContainer],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 14,
+                  spreadRadius: 0,
+                  offset: const Offset(0, 6),
+                  color: Colors.black.withOpacity(0.06),
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.layers_rounded,
+                      size: 28,
+                      color: cs.onPrimaryContainer,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        heading,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: cs.onPrimaryContainer,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.2,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: cs.primary.withOpacity(.15),
+                        borderRadius: BorderRadius.circular(999),
+                        border: Border.all(color: cs.primary),
+                      ),
+                      child: Text(
+                        badge,
+                        style: TextStyle(
+                          color: cs.onPrimaryContainer,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                          letterSpacing: .3,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  resumen,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: cs.onPrimaryContainer.withOpacity(.9),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 16),
           // Problemática / Solución general
           LayoutBuilder(
             builder: (context, c) {
@@ -256,7 +347,6 @@ class PatternTemplate extends StatelessWidget {
             },
           ),
 
-          const SizedBox(height: 16),
           const SizedBox(height: 16),
           // Apartado agrupado: Caso específico + Solución específica + Código + Playground
           PatternSection(

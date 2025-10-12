@@ -15,7 +15,7 @@ class AbstractFactoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PatternTemplate(
-      heading: 'Abstract Factory — Notificaciones',
+      heading: 'Abstract Factory',
       badge: 'Creacional',
       resumen:
           'Abstract Factory provee familias de productos relacionados (por ejemplo, banners/snackbars) sin acoplar al cliente a clases concretas. Permite cambiar la “skin” o variante sin tocar la UI.',
