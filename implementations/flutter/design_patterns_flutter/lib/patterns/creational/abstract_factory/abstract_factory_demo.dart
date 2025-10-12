@@ -14,7 +14,6 @@ class NotificationsDualDemo extends StatefulWidget {
 }
 
 class _NotificationsDualDemoState extends State<NotificationsDualDemo> {
-  // Slider: 0 -> Banner, 1 -> Toast
   double _prefValue = 0;
   _Pref get _pref => _prefValue < 0.5 ? _Pref.banner : _Pref.toast;
 
