@@ -4,6 +4,9 @@ import 'package:design_patterns_flutter/patterns/creational/factory/template/scr
 import 'package:design_patterns_flutter/patterns/creational/prototype/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/creational/singleton/template/screen.dart';
 import 'package:flutter/widgets.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/command/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/state/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/strategy/template/screen.dart';
 
 class PatternEntry {
   final String id;
@@ -56,5 +59,23 @@ final patterns = <PatternEntry>[
     name: 'Observer',
     category: 'Behavioral',
     builder: (_) => const Placeholder(),
+  ),
+  PatternEntry(
+    id: 'command',
+    name: 'Command',
+    category: 'Behavioral',
+    builder: (_) => const CommandScreen(),
+  ),
+  PatternEntry(
+    id: 'state',
+    name: 'State',
+    category: 'Behavioral',
+    builder: (_) => const StateScreen(),
+  ),
+  PatternEntry(
+    id: 'strategy',
+    name: 'Strategy',
+    category: 'Behavioral',
+    builder: (_) => const StrategyScreen(),
   ),
 ];
