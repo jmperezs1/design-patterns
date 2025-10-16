@@ -46,6 +46,8 @@ class AbstractFactoryScreen extends StatelessWidget {
         ),
       ],
       playground: NotificationsDualDemo(),
+      playgroundExplicacion:
+          'Elige la familia de UI (Banner o SnackBar) y luego una variante. La Abstract Factory devuelve widgets consistentes por familia sin que el cliente se acople a clases concretas.',
     );
   }
 }

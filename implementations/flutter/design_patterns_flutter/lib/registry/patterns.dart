@@ -1,6 +1,7 @@
 import 'package:design_patterns_flutter/patterns/creational/abstract_factory/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/creational/builder/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/creational/factory/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/creational/prototype/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/creational/singleton/template/screen.dart';
 import 'package:flutter/widgets.dart';
 
@@ -31,6 +32,12 @@ final patterns = <PatternEntry>[
     name: 'Factory',
     category: 'Creational',
     builder: (_) => const FactoryScreen(),
+  ),
+  PatternEntry(
+    id: 'prototype',
+    name: 'Prototype',
+    category: 'Creational',
+    builder: (_) => const PrototypeScreen(),
   ),
   PatternEntry(
     id: 'abstract_factory',

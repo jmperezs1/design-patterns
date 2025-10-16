@@ -37,6 +37,8 @@ class BuilderScreen extends StatelessWidget {
         CodeSnippet(title: 'builder_demo.dart', code: snippets.demoCode),
       ],
       playground: const BuilderDemo(),
+      playgroundExplicacion:
+          'Completa campos opcionales (título, subtítulo, imagen, cuerpo, pie). El Director orquesta los pasos del Builder y genera la tarjeta final. Quita/añade partes y observa cómo cambia el producto sin tocar la construcción interna.',
     );
   }
 }

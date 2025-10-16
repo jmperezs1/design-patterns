@@ -35,6 +35,8 @@ class SingletonScreen extends StatelessWidget {
         CodeSnippet(title: 'usage.dart', code: singleton_usage.singletonUsage),
       ],
       playground: const SingletonDemo(),
+      playgroundExplicacion:
+          'Este playground usa una única instancia de PokemonApi para traer datos sin recrear el cliente. Prueba distintas búsquedas y notarás que la instancia es la misma; la UI sólo consume el servicio compartido.',
     );
   }
 }

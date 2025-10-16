@@ -168,6 +168,8 @@ class PatternTemplate extends StatelessWidget {
   final Widget? codigoFuente; // opcional (manual)
   final List<CodeSnippet> codeSnippets; // opcional (auto render)
   final Widget playground;
+  // Explicación opcional para el Playground
+  final String? playgroundExplicacion;
 
   const PatternTemplate({
     super.key,
@@ -183,6 +185,7 @@ class PatternTemplate extends StatelessWidget {
     this.codigoFuente,
     this.codeSnippets = const [],
     required this.playground,
+    this.playgroundExplicacion,
   });
 
   @override
@@ -413,6 +416,33 @@ class PatternTemplate extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
+                if (playgroundExplicacion != null &&
+                    playgroundExplicacion!.trim().isNotEmpty) ...[
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: cs.surfaceVariant.withOpacity(0.35),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: cs.outlineVariant),
+                    ),
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(bottom: 8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(Icons.info_outline, size: 18, color: cs.primary),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            playgroundExplicacion!,
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(color: cs.onSurfaceVariant),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
                 playground,
               ],
             ),

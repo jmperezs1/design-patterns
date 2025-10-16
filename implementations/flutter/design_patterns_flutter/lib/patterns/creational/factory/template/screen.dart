@@ -33,6 +33,8 @@ class FactoryScreen extends StatelessWidget {
         CodeSnippet(title: 'demo.dart', code: factory_demo_code.factoryDemo),
       ],
       playground: const FactoryDemo(),
+      playgroundExplicacion:
+          'Selecciona una variante (success/alert/info/warning) y observa cómo la fábrica devuelve un contenedor preconfigurado con colores e icono coherentes. Cambia el texto hijo para ver el estilo aplicado por la Factory.',
     );
   }
 }
