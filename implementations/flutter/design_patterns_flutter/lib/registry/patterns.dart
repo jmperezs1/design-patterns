@@ -7,6 +7,8 @@ import 'package:flutter/widgets.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/command/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/state/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/strategy/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/structural/adapter/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/structural/bridge/template/screen.dart';
 
 class PatternEntry {
   final String id;
@@ -77,5 +79,17 @@ final patterns = <PatternEntry>[
     name: 'Strategy',
     category: 'Behavioral',
     builder: (_) => const StrategyScreen(),
+  ),
+  PatternEntry(
+    id: 'adapter',
+    name: 'Adapter',
+    category: 'Structural',
+    builder: (_) => const AdapterScreen(),
+  ),
+  PatternEntry(
+    id: 'bridge',
+    name: 'Bridge',
+    category: 'Structural',
+    builder: (_) => const BridgeScreen(),
   ),
 ];
