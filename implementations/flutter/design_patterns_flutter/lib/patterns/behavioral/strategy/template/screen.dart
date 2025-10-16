@@ -24,9 +24,19 @@ class StrategyScreen extends StatelessWidget {
       diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_strategy.png',
       diagramaSolucionEspecificaAssetPath: 'assets/diagrams/strategy.png',
       codeSnippets: const [
-        CodeSnippet(title: 'strategy.dart', code: 'abstract class PricingStrategy {\n  double getPrice(double baseUnitPrice, int quantity);\n}\n'),
-        CodeSnippet(title: 'pricing_context.dart', code: 'class PricingContext { /* ... */ }'),
-        CodeSnippet(title: 'strategies/*.dart', code: 'Standard/Gold/Platinum/VIP implementan PricingStrategy'),
+        CodeSnippet(
+          title: 'strategy.dart',
+          code:
+              'abstract class PricingStrategy {\n  double getPrice(double baseUnitPrice, int quantity);\n}\n',
+        ),
+        CodeSnippet(
+          title: 'pricing_context.dart',
+          code: 'class PricingContext { /* ... */ }',
+        ),
+        CodeSnippet(
+          title: 'strategies/*.dart',
+          code: 'Standard/Gold/Platinum/VIP implementan PricingStrategy',
+        ),
       ],
       playground: const PricingCatalog(),
       playgroundExplicacion:

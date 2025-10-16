@@ -29,24 +29,51 @@ class _PricingCatalogState extends State<PricingCatalog> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Catálogo', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
-                Text('Selecciona un tipo de cliente para aplicar la estrategia',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant)),
+                Text(
+                  'Catálogo',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Selecciona un tipo de cliente para aplicar la estrategia',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+                ),
               ],
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Tipo de cliente', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant)),
+                Text(
+                  'Tipo de cliente',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+                ),
                 const SizedBox(width: 8),
                 DropdownButton<ClientType>(
                   value: clientType,
-                  onChanged: (v) => setState(() => clientType = v ?? ClientType.standard),
+                  onChanged: (v) =>
+                      setState(() => clientType = v ?? ClientType.standard),
                   items: const [
-                    DropdownMenuItem(value: ClientType.standard, child: Text('Standard')),
-                    DropdownMenuItem(value: ClientType.gold, child: Text('Gold (10% desc.)')),
-                    DropdownMenuItem(value: ClientType.platinum, child: Text('Platinum (5% desc.)')),
-                    DropdownMenuItem(value: ClientType.vip, child: Text('VIP (20% desc.)')),
+                    DropdownMenuItem(
+                      value: ClientType.standard,
+                      child: Text('Standard'),
+                    ),
+                    DropdownMenuItem(
+                      value: ClientType.gold,
+                      child: Text('Gold (10% desc.)'),
+                    ),
+                    DropdownMenuItem(
+                      value: ClientType.platinum,
+                      child: Text('Platinum (5% desc.)'),
+                    ),
+                    DropdownMenuItem(
+                      value: ClientType.vip,
+                      child: Text('VIP (20% desc.)'),
+                    ),
                   ],
                 ),
               ],
@@ -54,32 +81,39 @@ class _PricingCatalogState extends State<PricingCatalog> {
           ],
         ),
         const SizedBox(height: 12),
-        LayoutBuilder(builder: (context, c) {
-          final threeCols = c.maxWidth > 900;
-          final twoCols = c.maxWidth > 640;
-          final crossAxisCount = threeCols ? 3 : twoCols ? 2 : 1;
-          // Ajustar la altura de las tarjetas según columnas para evitar overflow
-          final aspectRatio = threeCols
-              ? 4 / 3 // más ancho, menos alto
-              : twoCols
-                  ? 1.15 // un poco más alto
-                  : 0.9; // alto en 1 columna
-          return GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-              childAspectRatio: aspectRatio,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-            ),
-            itemCount: products.length,
-            itemBuilder: (context, i) {
-              final p = products[i];
-              return _ProductCard(key: ValueKey(p.id), product: p, ctx: ctx);
-            },
-          );
-        }),
+        LayoutBuilder(
+          builder: (context, c) {
+            final threeCols = c.maxWidth > 900;
+            final twoCols = c.maxWidth > 640;
+            final crossAxisCount = threeCols
+                ? 3
+                : twoCols
+                ? 2
+                : 1;
+            // Ajustar la altura de las tarjetas según columnas para evitar overflow
+            final aspectRatio = threeCols
+                ? 4 /
+                      3 // más ancho, menos alto
+                : twoCols
+                ? 1.15 // un poco más alto
+                : 0.9; // alto en 1 columna
+            return GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                childAspectRatio: aspectRatio,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+              ),
+              itemCount: products.length,
+              itemBuilder: (context, i) {
+                final p = products[i];
+                return _ProductCard(key: ValueKey(p.id), product: p, ctx: ctx);
+              },
+            );
+          },
+        ),
       ],
     );
   }
@@ -112,7 +146,9 @@ class _ProductCardState extends State<_ProductCard> {
         if (clamped != qty || _qtyController.text != '$clamped') {
           setState(() => qty = clamped);
           _qtyController.text = '$clamped';
-          _qtyController.selection = TextSelection.collapsed(offset: _qtyController.text.length);
+          _qtyController.selection = TextSelection.collapsed(
+            offset: _qtyController.text.length,
+          );
         }
       }
     });
@@ -158,15 +194,16 @@ class _ProductCardState extends State<_ProductCard> {
                         Expanded(
                           child: Text(
                             widget.product.name,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall
+                            style: Theme.of(context).textTheme.titleSmall
                                 ?.copyWith(fontWeight: FontWeight.bold),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: cs.secondaryContainer,
                             borderRadius: BorderRadius.circular(999),
@@ -182,10 +219,9 @@ class _ProductCardState extends State<_ProductCard> {
                       const SizedBox(height: 4),
                       Text(
                         widget.product.description!,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(color: cs.onSurfaceVariant),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: cs.onSurfaceVariant,
+                        ),
                       ),
                     ],
                     const Divider(height: 16),
@@ -194,16 +230,12 @@ class _ProductCardState extends State<_ProductCard> {
                       children: [
                         Text(
                           'Precio unitario',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
+                          style: Theme.of(context).textTheme.bodySmall
                               ?.copyWith(color: cs.onSurfaceVariant),
                         ),
                         Text(
                           currency(unit),
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
+                          style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -217,9 +249,7 @@ class _ProductCardState extends State<_ProductCard> {
                           children: [
                             Text(
                               'Cant.',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
+                              style: Theme.of(context).textTheme.bodySmall
                                   ?.copyWith(color: cs.onSurfaceVariant),
                             ),
                             const SizedBox(width: 8),
@@ -227,13 +257,17 @@ class _ProductCardState extends State<_ProductCard> {
                               width: 84,
                               child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: const InputDecoration(hintText: '1'),
+                                decoration: const InputDecoration(
+                                  hintText: '1',
+                                ),
                                 controller: _qtyController,
                                 focusNode: _qtyFocus,
                                 onChanged: (s) {
                                   // No reescribas el controlador mientras se escribe para no perder el foco
                                   final n = int.tryParse(s);
-                                  setState(() => qty = (n == null || n < 1) ? 1 : n);
+                                  setState(
+                                    () => qty = (n == null || n < 1) ? 1 : n,
+                                  );
                                 },
                               ),
                             ),
@@ -241,9 +275,7 @@ class _ProductCardState extends State<_ProductCard> {
                         ),
                         Text(
                           currency(total),
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall
+                          style: Theme.of(context).textTheme.titleSmall
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ],
