@@ -6,7 +6,12 @@ class Order {
   final String customer;
   final double total;
   final String status;
-  const Order({required this.id, required this.customer, required this.total, required this.status});
+  const Order({
+    required this.id,
+    required this.customer,
+    required this.total,
+    required this.status,
+  });
 }
 
 class OrdersReport extends Report {
@@ -16,12 +21,14 @@ class OrdersReport extends Report {
   @override
   Future<ReportData> build() async {
     final rows = orders
-        .map((o) => {
-              'id': o.id,
-              'customer': o.customer,
-              'total': o.total,
-              'status': o.status,
-            })
+        .map(
+          (o) => {
+            'id': o.id,
+            'customer': o.customer,
+            'total': o.total,
+            'status': o.status,
+          },
+        )
         .toList();
     return ReportData(title: 'Orders Report', rows: rows);
   }

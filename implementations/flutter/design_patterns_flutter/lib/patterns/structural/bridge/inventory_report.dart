@@ -6,7 +6,12 @@ class Product {
   final String name;
   final int stock;
   final int min;
-  const Product({required this.sku, required this.name, required this.stock, required this.min});
+  const Product({
+    required this.sku,
+    required this.name,
+    required this.stock,
+    required this.min,
+  });
 }
 
 class InventoryReport extends Report {
@@ -16,13 +21,15 @@ class InventoryReport extends Report {
   @override
   Future<ReportData> build() async {
     final rows = items
-        .map((p) => {
-              'sku': p.sku,
-              'name': p.name,
-              'stock': p.stock,
-              'min': p.min,
-              'value': p.stock * p.min,
-            })
+        .map(
+          (p) => {
+            'sku': p.sku,
+            'name': p.name,
+            'stock': p.stock,
+            'min': p.min,
+            'value': p.stock * p.min,
+          },
+        )
         .toList();
     return ReportData(title: 'Inventory Report', rows: rows);
   }

@@ -64,7 +64,7 @@ class _AdapterDemoState extends State<AdapterDemo> {
   int get _pageSafe => _page.clamp(1, _totalPages);
 
   List<User> get _pageRows {
-    final start = ( _pageSafe - 1) * widget.pageSize;
+    final start = (_pageSafe - 1) * widget.pageSize;
     final end = (start + widget.pageSize).clamp(0, _filtered.length);
     return _filtered.sublist(start, end);
   }
@@ -115,9 +115,9 @@ class _AdapterDemoState extends State<AdapterDemo> {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(_loading
-                      ? 'Cargando…'
-                      : '${_filtered.length} resultado(s)'),
+                  Text(
+                    _loading ? 'Cargando…' : '${_filtered.length} resultado(s)',
+                  ),
                   const SizedBox(width: 12),
                   IconButton(
                     tooltip: 'Anterior',
@@ -135,7 +135,7 @@ class _AdapterDemoState extends State<AdapterDemo> {
                     icon: const Icon(Icons.chevron_right),
                   ),
                 ],
-              )
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -147,12 +147,7 @@ class _AdapterDemoState extends State<AdapterDemo> {
           const SizedBox(height: 4),
 
           if (_loading)
-            Column(
-              children: List.generate(
-                6,
-                (i) => const _DataRowSkeleton(),
-              ),
-            )
+            Column(children: List.generate(6, (i) => const _DataRowSkeleton()))
           else if (_pageRows.isEmpty)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24),
@@ -166,11 +161,7 @@ class _AdapterDemoState extends State<AdapterDemo> {
           else
             Column(
               children: _pageRows
-                  .map((u) => _DataRow(
-                        id: u.id,
-                        name: u.name,
-                        email: u.email,
-                      ))
+                  .map((u) => _DataRow(id: u.id, name: u.name, email: u.email))
                   .toList(),
             ),
 
@@ -216,13 +207,13 @@ class _DataRowSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     Widget box(double w) => Container(
-          height: 18,
-          width: w,
-          decoration: BoxDecoration(
-            color: cs.surfaceVariant.withOpacity(.6),
-            borderRadius: BorderRadius.circular(4),
-          ),
-        );
+      height: 18,
+      width: w,
+      decoration: BoxDecoration(
+        color: cs.surfaceVariant.withOpacity(.6),
+        borderRadius: BorderRadius.circular(4),
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: Row(
@@ -251,7 +242,12 @@ class _DataRow extends StatelessWidget {
         children: [
           SizedBox(width: 120, child: Text('$id')),
           const SizedBox(width: 12),
-          Expanded(child: Text(name, style: const TextStyle(fontWeight: FontWeight.w600))),
+          Expanded(
+            child: Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
+          ),
           const SizedBox(width: 12),
           Expanded(child: Text(email)),
         ],

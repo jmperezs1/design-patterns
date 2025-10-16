@@ -25,8 +25,8 @@ class AdapterScreen extends StatelessWidget {
           'Tenemos un servicio que devuelve datos en formato CSV (Adaptee). La UI espera una lista de usuarios tipados. El Adapter convierte el CSV en List<User> expuesto mediante Target.request().',
       solucionEspecifica:
           'El Adapter recibe el Adaptee, invoca specificRequest() (CSV) y lo transforma en objetos User. La UI sólo usa Target.request() y muestra una tabla con búsqueda y paginación.',
-  diagramaSolucionGeneralAssetPath: null,
-  diagramaSolucionEspecificaAssetPath: null,
+      diagramaSolucionGeneralAssetPath: null,
+      diagramaSolucionEspecificaAssetPath: null,
       codeSnippets: const [
         CodeSnippet(
           title: 'target.dart',
