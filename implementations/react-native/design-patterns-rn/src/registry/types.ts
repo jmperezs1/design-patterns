@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { ViewProps } from 'react-native';
+import type { ViewProps, ImageSourcePropType } from 'react-native';
 
 export type Category = 'Creational' | 'Structural' | 'Behavioral';
 
@@ -10,10 +10,10 @@ export type CodeSnippet = {
 };
 
 export type PatternImages = {
-  // URIs for images (remote, data:, or file://). For local RN assets use components or inline require in screens.
-  general?: string;
-  specific?: string;
-  extras?: string[];
+  // Use React Native ImageSource: require('...'), { uri }, or an array for extras
+  general?: ImageSourcePropType;
+  specific?: ImageSourcePropType;
+  extras?: ImageSourcePropType[];
 };
 
 export type PatternEntry = {
@@ -21,6 +21,15 @@ export type PatternEntry = {
   name: string;
   category: 'Creational' | 'Structural' | 'Behavioral' | (string & {});
   Component: ComponentType<ViewProps>;
+  // Flutter-like outline fields (optional)
+  resumen?: string; // short summary under header
+  problematicaGeneral?: string;
+  solucionGeneral?: string;
+  casoEspecifico?: string;
+  solucionEspecifica?: string;
+  playgroundExplicacion?: string;
+  playgroundComoInteractuar?: string;
+  // Legacy single-block description (fallback to resumen)
   markdown?: string;
   codeSnippets?: CodeSnippet[];
   images?: PatternImages;

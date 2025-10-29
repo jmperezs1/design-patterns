@@ -95,6 +95,7 @@ export const ClientListRN: React.FC<Props> = ({ api, pageSize = 10 }) => {
         <FlatList
           data={pageRows}
           keyExtractor={(u) => String(u.id)}
+          scrollEnabled={false}
           renderItem={({ item }) => (
             <View style={styles.dataRow}>
               <Text style={{ width: 80 }}>{item.id}</Text>

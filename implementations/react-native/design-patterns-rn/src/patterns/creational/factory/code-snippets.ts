@@ -1,15 +1,14 @@
-import React from 'react';
+import type { CodeSnippet } from '../../../registry/types';
+
+export const factoryCodeSnippets: CodeSnippet[] = [
+  { title: 'variants/variants.ts', language: 'ts', code: `export type Variant = 'success' | 'alert' | 'informative' | 'warning' | 'default';` },
+  { title: 'components/wrapper.tsx', language: 'tsx', code: `import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import type { Variant } from '../variants/variants';
 
 export function createWrapper(variant: Variant, child: React.ReactNode) {
-  let s: {
-    bg: string;
-    ring: string;
-    accent: string;
-    icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
-  } = { bg: '#F5F5F5', ring: '#E0E0E0', accent: '#424242', icon: 'information-outline' };
+  let s: { bg: string; ring: string; accent: string; icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'] } = { bg: '#F5F5F5', ring: '#E0E0E0', accent: '#424242', icon: 'information-outline' };
   switch (variant) {
     case 'success': s = { bg: '#E8F5E9', ring: '#A5D6A7', accent: '#2E7D32', icon: 'check-circle' }; break;
     case 'alert': s = { bg: '#FFEBEE', ring: '#EF9A9A', accent: '#C62828', icon: 'close-circle' }; break;
@@ -32,3 +31,23 @@ export const Wrapper: React.FC<{ variant: Variant; children: React.ReactNode }> 
 const styles = StyleSheet.create({
   container: { padding: 12, borderRadius: 12, borderWidth: 1, flexDirection: 'row', alignItems: 'flex-start' },
 });
+` },
+  { title: 'factory.tsx', language: 'tsx', code: `export { createWrapper, Wrapper } from './components/wrapper';` },
+  { title: 'demo.tsx', language: 'tsx', code: `import React from 'react';
+import { View, Text } from 'react-native';
+import { createWrapper } from './components/wrapper';
+
+export const FactoryDemo: React.FC = () => (
+  <View>
+    {createWrapper('success', <Text>Archivo subido correctamente</Text>)}
+    <View style={{ height: 12 }} />
+    {createWrapper('warning', <Text>Espacio de almacenamiento limitado</Text>)}
+    <View style={{ height: 12 }} />
+    {createWrapper('alert', <Text>Error de conexión</Text>)}
+    <View style={{ height: 12 }} />
+    {createWrapper('informative', <Text>Nueva versión disponible</Text>)}
+  </View>
+);
+` },
+];
+ 
