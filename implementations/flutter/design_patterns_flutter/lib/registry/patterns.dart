@@ -4,16 +4,24 @@ import 'package:design_patterns_flutter/patterns/creational/factory/template/scr
 import 'package:design_patterns_flutter/patterns/creational/prototype/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/creational/singleton/template/screen.dart';
 import 'package:flutter/widgets.dart';
+import 'package:design_patterns_flutter/patterns/structural/facade/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/command/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/chain_of_responsibility/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/state/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/strategy/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/interpreter/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/mediator/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/iterator/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/template/template_screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/visitor/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/memento/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/structural/composite/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/structural/decorator/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/observer/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/structural/adapter/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/structural/bridge/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/structural/flyweight/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/structural/proxy/template/screen.dart';
 
 class PatternEntry {
   final String id;
@@ -90,6 +98,54 @@ final patterns = <PatternEntry>[
     name: 'Mediator',
     category: 'Behavioral',
     builder: (_) => const MediatorScreen(),
+  ),
+  PatternEntry(
+    id: 'facade',
+    name: 'Facade',
+    category: 'Structural',
+    builder: (_) => const FacadeScreen(),
+  ),
+  PatternEntry(
+    id: 'flyweight',
+    name: 'Flyweight',
+    category: 'Structural',
+    builder: (_) => const FlyweightScreen(),
+  ),
+  PatternEntry(
+    id: 'proxy',
+    name: 'Proxy',
+    category: 'Structural',
+    builder: (_) => const ProxyScreen(),
+  ),
+  PatternEntry(
+    id: 'iterator',
+    name: 'Iterator',
+    category: 'Behavioral',
+    builder: (_) => const IteratorScreen(),
+  ),
+  PatternEntry(
+    id: 'template_method',
+    name: 'Template Method',
+    category: 'Behavioral',
+    builder: (_) => const TemplateMethodScreen(),
+  ),
+  PatternEntry(
+    id: 'visitor',
+    name: 'Visitor',
+    category: 'Behavioral',
+    builder: (_) => const VisitorScreen(),
+  ),
+  PatternEntry(
+    id: 'composite',
+    name: 'Composite',
+    category: 'Structural',
+    builder: (_) => const CompositeScreen(),
+  ),
+  PatternEntry(
+    id: 'decorator',
+    name: 'Decorator',
+    category: 'Structural',
+    builder: (_) => const DecoratorScreen(),
   ),
   PatternEntry(
     id: 'state',
