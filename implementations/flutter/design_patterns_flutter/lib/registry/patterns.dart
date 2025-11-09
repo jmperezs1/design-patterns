@@ -5,8 +5,13 @@ import 'package:design_patterns_flutter/patterns/creational/prototype/template/s
 import 'package:design_patterns_flutter/patterns/creational/singleton/template/screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/command/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/chain_of_responsibility/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/state/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/behavioral/strategy/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/interpreter/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/mediator/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/memento/template/screen.dart';
+import 'package:design_patterns_flutter/patterns/behavioral/observer/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/structural/adapter/template/screen.dart';
 import 'package:design_patterns_flutter/patterns/structural/bridge/template/screen.dart';
 
@@ -60,13 +65,31 @@ final patterns = <PatternEntry>[
     id: 'observer',
     name: 'Observer',
     category: 'Behavioral',
-    builder: (_) => const Placeholder(),
+    builder: (_) => const ObserverScreen(),
   ),
   PatternEntry(
     id: 'command',
     name: 'Command',
     category: 'Behavioral',
     builder: (_) => const CommandScreen(),
+  ),
+  PatternEntry(
+    id: 'chain_of_responsibility',
+    name: 'Chain of Responsibility',
+    category: 'Behavioral',
+    builder: (_) => const ChainOfResponsibilityScreen(),
+  ),
+  PatternEntry(
+    id: 'interpreter',
+    name: 'Interpreter',
+    category: 'Behavioral',
+    builder: (_) => const InterpreterScreen(),
+  ),
+  PatternEntry(
+    id: 'mediator',
+    name: 'Mediator',
+    category: 'Behavioral',
+    builder: (_) => const MediatorScreen(),
   ),
   PatternEntry(
     id: 'state',
@@ -79,6 +102,12 @@ final patterns = <PatternEntry>[
     name: 'Strategy',
     category: 'Behavioral',
     builder: (_) => const StrategyScreen(),
+  ),
+  PatternEntry(
+    id: 'memento',
+    name: 'Memento',
+    category: 'Behavioral',
+    builder: (_) => const MementoScreen(),
   ),
   PatternEntry(
     id: 'adapter',
