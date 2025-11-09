@@ -18,13 +18,17 @@ class AppointmentFacade {
     CRMService? crm,
     NotificationService? notify,
     AuditLogger? log,
-  })  : calendar = calendar ?? CalendarAPI(),
-        payments = payments ?? PaymentGateway(),
-        crm = crm ?? CRMService(),
-        notify = notify ?? NotificationService(),
-        log = log ?? AuditLogger();
+  }) : calendar = calendar ?? CalendarAPI(),
+       payments = payments ?? PaymentGateway(),
+       crm = crm ?? CRMService(),
+       notify = notify ?? NotificationService(),
+       log = log ?? AuditLogger();
 
-  Future<Map<String, dynamic>> book({required Customer customer, required Slot slot, required Payment payment}) async {
+  Future<Map<String, dynamic>> book({
+    required Customer customer,
+    required Slot slot,
+    required Payment payment,
+  }) async {
     final steps = <String>[];
     String? reservationId;
     String? txId;
@@ -33,18 +37,35 @@ class AppointmentFacade {
       final c = await crm.upsertCustomer(customer);
       steps.add(log.log('CRM: upserted customer ${c.customerId} (${c.email})'));
 
-      final res = await calendar.reserve({'resourceId': slot.resourceId, 'start': slot.start, 'end': slot.end});
+      final res = await calendar.reserve({
+        'resourceId': slot.resourceId,
+        'start': slot.start,
+        'end': slot.end,
+      });
       reservationId = res.reservationId;
       steps.add(log.log('Calendar: reserved slot $reservationId'));
 
-      final pay = await payments.authorize({'amount': payment.amount, 'currency': payment.currency});
+      final pay = await payments.authorize({
+        'amount': payment.amount,
+        'currency': payment.currency,
+      });
       txId = pay.txId;
-      steps.add(log.log('Payments: authorized $txId ${pay.amount} ${pay.currency}'));
+      steps.add(
+        log.log('Payments: authorized $txId ${pay.amount} ${pay.currency}'),
+      );
 
-      final act = await crm.createActivity({'customerId': c.customerId, 'slot': slot, 'txId': txId});
+      final act = await crm.createActivity({
+        'customerId': c.customerId,
+        'slot': slot,
+        'txId': txId,
+      });
       steps.add(log.log('CRM: created activity ${act.activityId}'));
 
-      await notify.email(c.email, 'Appointment confirmed', 'See you at ${slot.start}');
+      await notify.email(
+        c.email,
+        'Appointment confirmed',
+        'See you at ${slot.start}',
+      );
       steps.add(log.log('Notify: email sent to ${c.email}'));
 
       if (c.phone != null) {

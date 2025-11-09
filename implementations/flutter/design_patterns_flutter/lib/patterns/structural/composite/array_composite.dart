@@ -5,8 +5,11 @@ class ArrayNode implements JsonComponent {
   final String keyLabel;
   final List<JsonComponent> _kids;
 
-  ArrayNode(this.keyLabel, List<dynamic> arr, JsonComponent Function(String, dynamic) buildNode)
-      : _kids = List.generate(arr.length, (i) => buildNode(i.toString(), arr[i]));
+  ArrayNode(
+    this.keyLabel,
+    List<dynamic> arr,
+    JsonComponent Function(String, dynamic) buildNode,
+  ) : _kids = List.generate(arr.length, (i) => buildNode(i.toString(), arr[i]));
 
   @override
   bool isLeaf() => false;

@@ -5,8 +5,11 @@ class ObjectNode implements JsonComponent {
   final String keyLabel;
   final List<JsonComponent> _kids;
 
-  ObjectNode(this.keyLabel, Map<String, dynamic> obj, JsonComponent Function(String, dynamic) buildNode)
-      : _kids = obj.entries.map((e) => buildNode(e.key, e.value)).toList();
+  ObjectNode(
+    this.keyLabel,
+    Map<String, dynamic> obj,
+    JsonComponent Function(String, dynamic) buildNode,
+  ) : _kids = obj.entries.map((e) => buildNode(e.key, e.value)).toList();
 
   @override
   bool isLeaf() => false;

@@ -11,8 +11,17 @@ class ContactPage extends StatelessWidget {
       title: 'Contact support',
       flow: ContactFlow(),
       fields: [
-        FieldSpec(name: 'subject', label: 'Subject', placeholder: 'Billing issue'),
-        FieldSpec(name: 'message', label: 'Message', type: 'text', placeholder: 'Describe the problem...'),
+        FieldSpec(
+          name: 'subject',
+          label: 'Subject',
+          placeholder: 'Billing issue',
+        ),
+        FieldSpec(
+          name: 'message',
+          label: 'Message',
+          type: 'text',
+          placeholder: 'Describe the problem...',
+        ),
         FieldSpec(name: 'priority', label: 'Priority (low/normal/high)'),
       ],
     );

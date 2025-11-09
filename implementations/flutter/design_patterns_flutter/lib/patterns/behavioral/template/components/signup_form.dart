@@ -11,8 +11,18 @@ class SignupPage extends StatelessWidget {
       title: 'Create account',
       flow: SignupFlow(),
       fields: [
-        FieldSpec(name: 'email', label: 'Email', type: 'email', placeholder: 'ada@company.com'),
-        FieldSpec(name: 'password', label: 'Password', type: 'password', placeholder: '••••••••'),
+        FieldSpec(
+          name: 'email',
+          label: 'Email',
+          type: 'email',
+          placeholder: 'ada@company.com',
+        ),
+        FieldSpec(
+          name: 'password',
+          label: 'Password',
+          type: 'password',
+          placeholder: '••••••••',
+        ),
       ],
     );
   }

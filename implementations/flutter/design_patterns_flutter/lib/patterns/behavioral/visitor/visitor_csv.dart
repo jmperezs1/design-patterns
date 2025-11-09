@@ -8,17 +8,23 @@ class CsvExportVisitor implements Visitor {
 
   @override
   void visitBook(Book e) {
-    rows.add('book,"${e.title.replaceAll('"', '""')}",${e.qty},${e.unitPrice},imported=${e.isImported}');
+    rows.add(
+      'book,"${e.title.replaceAll('"', '""')}",${e.qty},${e.unitPrice},imported=${e.isImported}',
+    );
   }
 
   @override
   void visitElectronics(Electronics e) {
-    rows.add('electronics,"${e.name.replaceAll('"', '""')}",${e.qty},${e.unitPrice},fragile=${e.fragile}');
+    rows.add(
+      'electronics,"${e.name.replaceAll('"', '""')}",${e.qty},${e.unitPrice},fragile=${e.fragile}',
+    );
   }
 
   @override
   void visitGrocery(Grocery e) {
-    rows.add('grocery,"${e.name.replaceAll('"', '""')}",${e.qty},${e.unitPrice},perishable=${e.perishable}');
+    rows.add(
+      'grocery,"${e.name.replaceAll('"', '""')}",${e.qty},${e.unitPrice},perishable=${e.perishable}',
+    );
   }
 
   @override

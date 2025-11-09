@@ -24,15 +24,18 @@ class IteratorScreen extends StatelessWidget {
       codeSnippets: const [
         CodeSnippet(
           title: 'iterator.dart',
-          code: 'abstract class IteratorIface<T> { bool hasNext(); T next(); void remove(); void reset(); }',
+          code:
+              'abstract class IteratorIface<T> { bool hasNext(); T next(); void remove(); void reset(); }',
         ),
         CodeSnippet(
           title: 'concrete-iterator.dart',
-          code: 'class PlaylistIterator implements IteratorIface<Song> { /* index, hasNext, next, remove, reset */ }',
+          code:
+              'class PlaylistIterator implements IteratorIface<Song> { /* index, hasNext, next, remove, reset */ }',
         ),
         CodeSnippet(
           title: 'concrete-aggregate.dart',
-          code: 'class Playlist implements Aggregate<Song> { List<Song> _items; createIterator() => PlaylistIterator(this); }',
+          code:
+              'class Playlist implements Aggregate<Song> { List<Song> _items; createIterator() => PlaylistIterator(this); }',
         ),
       ],
       playground: const IteratorDemo(),

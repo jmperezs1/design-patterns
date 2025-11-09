@@ -23,25 +23,51 @@ class TemplateMethodScreen extends StatelessWidget {
       solucionEspecifica:
           'FormTemplate.submit() orquesta el flujo. SimpleForm delega la acción a la instancia del flow (SignupFlow / ContactFlow).',
       codeSnippets: const [
-        CodeSnippet(title: 'abstract-class.dart', code: 'abstract class FormTemplate { Future<String> submit(Map<String,dynamic>); /* ... */ }'),
-        CodeSnippet(title: 'concrete-signup.dart', code: 'class SignupFlow extends FormTemplate { /* validate/send/afterSuccess/successMessage */ }'),
-        CodeSnippet(title: 'components/simple_form.dart', code: 'class SimpleForm extends StatefulWidget { /* UI + submit calling flow.submit */ }'),
+        CodeSnippet(
+          title: 'abstract-class.dart',
+          code:
+              'abstract class FormTemplate { Future<String> submit(Map<String,dynamic>); /* ... */ }',
+        ),
+        CodeSnippet(
+          title: 'concrete-signup.dart',
+          code:
+              'class SignupFlow extends FormTemplate { /* validate/send/afterSuccess/successMessage */ }',
+        ),
+        CodeSnippet(
+          title: 'components/simple_form.dart',
+          code:
+              'class SimpleForm extends StatefulWidget { /* UI + submit calling flow.submit */ }',
+        ),
       ],
       playground: Column(
         children: [
           const SizedBox(height: 6),
-          const Text('Cómo interactuar: completa los campos y envía el formulario.'),
+          const Text(
+            'Cómo interactuar: completa los campos y envía el formulario.',
+          ),
           const SizedBox(height: 8),
           // two forms side by side on wide layouts
-          LayoutBuilder(builder: (context, c) {
-            final twoCols = c.maxWidth > 720;
-            if (twoCols) {
-              return Row(
-                children: [const Expanded(child: SignupPage()), const SizedBox(width: 12), const Expanded(child: ContactPage())],
+          LayoutBuilder(
+            builder: (context, c) {
+              final twoCols = c.maxWidth > 720;
+              if (twoCols) {
+                return Row(
+                  children: [
+                    const Expanded(child: SignupPage()),
+                    const SizedBox(width: 12),
+                    const Expanded(child: ContactPage()),
+                  ],
+                );
+              }
+              return Column(
+                children: [
+                  const SignupPage(),
+                  const SizedBox(height: 12),
+                  const ContactPage(),
+                ],
               );
-            }
-            return Column(children: [const SignupPage(), const SizedBox(height: 12), const ContactPage()]);
-          }),
+            },
+          ),
         ],
       ),
       playgroundExplicacion:

@@ -7,13 +7,26 @@ class FlyItem {
   final double y;
   final String color; // hex
 
-  FlyItem({required this.variant, required this.text, required this.x, required this.y, required this.color});
+  FlyItem({
+    required this.variant,
+    required this.text,
+    required this.x,
+    required this.y,
+    required this.color,
+  });
 }
 
 List<FlyItem> makeData(int count) {
   final rnd = Random(42);
   final variants = ['chip', 'pill', 'rounded-outline'];
-  final colors = ['#0f172a', '#0ea5a4', '#7c3aed', '#dc2626', '#0ea5a4', '#334155'];
+  final colors = [
+    '#0f172a',
+    '#0ea5a4',
+    '#7c3aed',
+    '#dc2626',
+    '#0ea5a4',
+    '#334155',
+  ];
 
   return List.generate(count, (i) {
     final v = variants[rnd.nextInt(variants.length)];

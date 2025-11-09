@@ -19,7 +19,12 @@ class BadgeFlyweight implements FlyweightBadge {
   });
 
   @override
-  Widget operation({required String text, required double x, required double y, required String color}) {
+  Widget operation({
+    required String text,
+    required double x,
+    required double y,
+    required String color,
+  }) {
     final textColor = _parseColor(color) ?? Colors.black;
 
     return Positioned(
@@ -34,7 +39,11 @@ class BadgeFlyweight implements FlyweightBadge {
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: textColor),
+          style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: textColor,
+          ),
         ),
       ),
     );

@@ -11,16 +11,26 @@ class FacadeScreen extends StatelessWidget {
     return PatternTemplate(
       heading: 'Facade',
       badge: 'Structural',
-      resumen: 'Provee una interfaz unificada para un conjunto de interfaces en un subsistema, simplificando su uso para el cliente.',
-      problematicaGeneral: 'Simplificar la interacción con sistemas múltiples y complejos, centralizando orquestación y compensaciones.',
-      solucionGeneral: 'Crear una fachada (AppointmentFacade) que exponga un método simple (book) y coordine CRM, Calendario, Pagos y Notificaciones.',
-      casoEspecifico: 'Reservar una cita: la fachada orquesta upsertCustomer, reserve, authorize, createActivity, email/sms; revierte si falla el pago.',
-      solucionEspecifica: 'AppointmentFacade.book(...) que ejecuta pasos y aplica rollback si alguno falla.',
+      resumen:
+          'Provee una interfaz unificada para un conjunto de interfaces en un subsistema, simplificando su uso para el cliente.',
+      problematicaGeneral:
+          'Simplificar la interacción con sistemas múltiples y complejos, centralizando orquestación y compensaciones.',
+      solucionGeneral:
+          'Crear una fachada (AppointmentFacade) que exponga un método simple (book) y coordine CRM, Calendario, Pagos y Notificaciones.',
+      casoEspecifico:
+          'Reservar una cita: la fachada orquesta upsertCustomer, reserve, authorize, createActivity, email/sms; revierte si falla el pago.',
+      solucionEspecifica:
+          'AppointmentFacade.book(...) que ejecuta pasos y aplica rollback si alguno falla.',
       codeSnippets: const [
-        CodeSnippet(title: 'facade.dart', code: 'class AppointmentFacade { Future<Map<String,dynamic>> book({required Customer customer, required Slot slot, required Payment payment}) async { /* ... */ } }'),
+        CodeSnippet(
+          title: 'facade.dart',
+          code:
+              'class AppointmentFacade { Future<Map<String,dynamic>> book({required Customer customer, required Slot slot, required Payment payment}) async { /* ... */ } }',
+        ),
       ],
       playground: const FacadeDemo(),
-      playgroundExplicacion: 'Completa el formulario y pulsa Reservar. Alterna "Simular fallo de pago" para ver la compensación.',
+      playgroundExplicacion:
+          'Completa el formulario y pulsa Reservar. Alterna "Simular fallo de pago" para ver la compensación.',
     );
   }
 }

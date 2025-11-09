@@ -12,7 +12,16 @@ class AddOnMeta {
 
 /// Keys: 'cheese', 'bacon', 'double'
 final Map<String, AddOnMeta> ADDONS = {
-  'cheese': AddOnMeta(label: 'Queso (+\$0.75)', build: (b) => CheeseDecorator(b)),
-  'bacon': AddOnMeta(label: 'Tocineta (+\$1.10)', build: (b) => BaconDecorator(b)),
-  'double': AddOnMeta(label: 'Extra carne (+\$2.20)', build: (b) => DoublePattyDecorator(b)),
+  'cheese': AddOnMeta(
+    label: 'Queso (+\$0.75)',
+    build: (b) => CheeseDecorator(b),
+  ),
+  'bacon': AddOnMeta(
+    label: 'Tocineta (+\$1.10)',
+    build: (b) => BaconDecorator(b),
+  ),
+  'double': AddOnMeta(
+    label: 'Extra carne (+\$2.20)',
+    build: (b) => DoublePattyDecorator(b),
+  ),
 };

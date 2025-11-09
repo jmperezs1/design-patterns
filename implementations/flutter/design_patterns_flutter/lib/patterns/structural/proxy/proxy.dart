@@ -10,7 +10,8 @@ class CachingProductProxy implements ProductService {
   int _hits = 0;
   int _misses = 0;
 
-  CachingProductProxy([HttpProductService? real]) : _real = real ?? HttpProductService();
+  CachingProductProxy([HttpProductService? real])
+    : _real = real ?? HttpProductService();
 
   @override
   Future<Product> getProduct(String id) async {
@@ -27,14 +28,17 @@ class CachingProductProxy implements ProductService {
     }
 
     _misses++;
-    final req = _real.getProduct(id).then((p) {
-      _cache[id] = p;
-      _inflight.remove(id);
-      return p;
-    }).catchError((e) {
-      _inflight.remove(id);
-      throw e;
-    });
+    final req = _real
+        .getProduct(id)
+        .then((p) {
+          _cache[id] = p;
+          _inflight.remove(id);
+          return p;
+        })
+        .catchError((e) {
+          _inflight.remove(id);
+          throw e;
+        });
 
     _inflight[id] = req;
     return req;

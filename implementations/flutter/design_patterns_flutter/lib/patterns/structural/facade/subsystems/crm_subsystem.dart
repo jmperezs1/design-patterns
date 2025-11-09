@@ -19,7 +19,11 @@ class CRMService {
   Future<CrmCustomer> upsertCustomer(Customer c) async {
     // Simulate network delay
     await Future.delayed(const Duration(milliseconds: 120));
-    return CrmCustomer(customerId: 'cust-${_id++}', email: c.email, phone: c.phone);
+    return CrmCustomer(
+      customerId: 'cust-${_id++}',
+      email: c.email,
+      phone: c.phone,
+    );
   }
 
   Future<CrmActivity> createActivity(Map<String, dynamic> opts) async {
