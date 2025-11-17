@@ -107,33 +107,6 @@ En el root tienes:
   "rn:android_run": "bash -lc 'cd implementations/react-native/design-patterns-rn && npm run android'"
 }
 ```
-
-### Primer uso
-
-```bash
-npm install
-cd implementations/react-native/design-patterns-rn && npm install
-cd implementations/flutter/design_patterns_flutter && flutter pub get
-cd ../../..
-```
-
-### Ejecutar desde root
-
-React Web:
-```bash
-npm run dev:web
-```
-
-Flutter:
-```bash
-npm run flutter:run
-```
-
-React Native:
-```bash
-npm run rn:android_run
-```
-
 ---
 
 ## 1) React (Web)
@@ -141,15 +114,6 @@ npm run rn:android_run
 ```bash
 cd implementations/react
 npm install
-npm run dev
-```
-
-URL sugerida: http://localhost:3000 o http://localhost:5173
-
-Build:
-```bash
-npm run build
-npm run start
 ```
 
 Navegación:
@@ -172,11 +136,6 @@ flutter doctor
 flutter pub get
 ```
 
-Ejecución:
-```bash
-flutter run
-```
-
 Navegación:
 - Lista de patrones
 - Demo interactivo por patrón
@@ -192,23 +151,29 @@ cd implementations/react-native/design-patterns-rn
 npm install
 ```
 
-### React Native CLI:
-```bash
-npx react-native start
-npx react-native run-android
 ```
-
-### Expo (si se usa):
-```bash
-npx expo start
-```
-Luego presiona `a` para abrir en Android.
 
 Navegación:
 - Lista de patrones
 - Playground interactivo en cada pantalla
 
 ---
+
+### Ejecutar desde root
+
+React Web:
+```bash
+npm run storybook
+```
+
+Flutter:
+```bash
+npm run flutter:run
+```
+
+React Native:
+```bash
+npm run rn:android_run
 
 ## Solución de problemas frecuentes
 
