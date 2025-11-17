@@ -4,6 +4,10 @@ import type { Product } from "./interfaces/product";
 import type { ReportData } from "./interfaces/report-data";
 import type { Row } from "./interfaces/row";
 
+/**
+ * Reporte de inventario que construye datos específicos para productos en inventario.
+ */
+
 export class InventoryReport extends Report {
   private items: Array<Product>;
   

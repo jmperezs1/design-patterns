@@ -1,6 +1,10 @@
 import type { EditorMemento } from "./memento";
 import type { EditorOriginator } from "./originator";
 
+/**
+ * El cuidador (Caretaker) es responsable de almacenar y restaurar los estados
+ */
+
 export class EditorCaretaker {
   private originator: EditorOriginator;
   private undoStack: EditorMemento[] = [];

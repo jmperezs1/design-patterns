@@ -28,7 +28,7 @@ function buildChain() {
   const h3 = h2.setNext(new SoporteNivel1());
   const h4 = h3.setNext(new SoporteNivel2());
   h4.setNext(new EscalamientoGerencia());
-  return h1; // cabeza de la cadena
+  return h1; 
 }
 
 export default function ChainOfResponsibilityDemo() {

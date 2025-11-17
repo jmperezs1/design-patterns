@@ -33,7 +33,7 @@ export const Implementation: StoryFn = () => {
 
       {/* Resumen */}
       <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-        <strong>Flyweight</strong> reduce el costo de memoria cuando hay muchísimas instancias similares. El estilo/forma (estado intrínseco) se comparte; posición, texto o color (estado extrínseco) se suministra por uso.
+        <strong>Flyweight</strong> reduce el costo de memoria cuando hay muchísimas instancias similares.
       </p>
 
       <Separator size="4" />
@@ -49,10 +49,17 @@ export const Implementation: StoryFn = () => {
         <div className="rounded-xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 p-5 shadow-sm space-y-3">
           <h4 className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">Solución General</h4>
           <p className="text-xs sm:text-sm text-emerald-900 dark:text-emerald-200">
-            Compartir el estado inmutable común (intrínseco) en objetos <em>flyweight</em> reutilizables, y pasar el estado cambiante (extrínseco) en cada operación.
+            Compartir el estado inmutable común en objetos <em>flyweight</em> reutilizables, y pasar el estado cambiante en cada operación.
           </p>
         </div>
       </section>
+
+      <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/real_flyweight.png" alt="Flyweight UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+        	</div>
 
       {/* Caso Específico */}
       <section className="rounded-2xl border border-gray-300 dark:border-gray-700/80 bg-white dark:bg-zinc-900/70 p-6 shadow-sm space-y-8">
@@ -74,6 +81,13 @@ export const Implementation: StoryFn = () => {
             La <code>BadgeFactory</code> crea y cachea flyweights por variante (pill, rounded-outline, chip) con su estilo intrínseco. Por cada item, se pasa el estado extrínseco (<code>text, x, y, color</code>) a <code>operation()</code>.
           </p>
         </div>
+
+        <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/flyweight.png" alt="Flyweight UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+        	</div>
 
         {/* Código Fuente */}
         <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5 space-y-5">

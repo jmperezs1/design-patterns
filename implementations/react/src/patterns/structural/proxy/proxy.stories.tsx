@@ -49,10 +49,17 @@ export const Implementation: StoryFn = () => {
 				<div className="rounded-xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 p-5 shadow-sm space-y-3">
 					<h4 className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">Solución General</h4>
 					<p className="text-xs sm:text-sm text-emerald-900 dark:text-emerald-200">
-						Insertar un <strong>Proxy</strong> que implemente la misma interfaz que el sujeto real. El proxy decide si usa caché, comparte inflight requests, o delega al sujeto real y actualiza métricas.
+						Insertar un <strong>Proxy</strong> que implemente la misma interfaz que el sujeto real. El proxy decide si usa caché, comparte requests, o delega al sujeto real y actualiza métricas.
 					</p>
 				</div>
 			</section>
+
+			<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/real_proxy.png" alt="Flyweight UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+        	</div>
 
 			{/* Caso Específico */}
 			<section className="rounded-2xl border border-gray-300 dark:border-gray-700/80 bg-white dark:bg-zinc-900/70 p-6 shadow-sm space-y-8">
@@ -74,6 +81,13 @@ export const Implementation: StoryFn = () => {
 						<code>CachingProductProxy</code> implementa la interfaz <code>ProductService</code>. Revisa caché, deduplica requests simultáneos por ID, y delega a <code>HttpProductService</code> sólo cuando es necesario, actualizando métricas.
 					</p>
 				</div>
+
+				<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/proxy.png" alt="Real Proxy UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+        	</div>
 
 				{/* Código Fuente */}
 				<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5 space-y-5">

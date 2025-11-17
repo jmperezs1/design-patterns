@@ -3,14 +3,36 @@
 import * as RadixToast from "@radix-ui/react-toast"
 import { CheckCircle, XCircle, Info, AlertTriangle } from "lucide-react"
 
+/**
+ * Variantes admitidas para la creación de notificaciones tipo Toast.
+ */
 export type Variant = "success" | "alert" | "informative" | "warning"
 
 
+/**
+ * Opciones de configuración para `createToast`.
+ * - `open`: controla si el toast está visible inicialmente (por defecto `true`).
+ * - `onOpenChange`: callback para controlar cambios en el estado de apertura.
+ */
 interface CreateToastOptions {
   open?: boolean
   onOpenChange?: (open: boolean) => void
 }
 
+/**
+ * Fábrica (Factory) para crear un componente Toast listo para renderizar.
+ *
+ * Selecciona icono, estilos y título en función de la variante indicada y
+ * devuelve un `RadixToast.Root` configurado. El resultado puede incrustarse en
+ * cualquier parte de la UI, preferentemente dentro de un `RadixToast.Provider`.
+ *
+ * Ejemplo de uso:
+ * ```tsx
+ * const toast = createToast("success", "Cambios guardados correctamente");
+ * // Renderizar dentro del contenedor de toasts
+ * <RadixToast.Provider>{toast}</RadixToast.Provider>
+ * ```
+ */
 export function createToast(
   variant: Variant,
   description: string,

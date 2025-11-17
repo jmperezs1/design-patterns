@@ -5,6 +5,10 @@ import { NotificationService } from "./subsystems/notification-subsystem";
 import { PaymentGateway } from "./subsystems/payment-subsystem";
 import type { Customer, Payment, Slot } from "./types/types";
 
+/**
+ * Fachada que simplifica la reserva de citas integrando múltiples subsistemas.
+ */
+
 export class AppointmentFacade {
   private calendar: CalendarAPI;
   private payments: PaymentGateway;

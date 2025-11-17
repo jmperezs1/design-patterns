@@ -1,6 +1,11 @@
 import type { Visitor } from "./visitor";
 import type { Element } from "./element";
 
+
+/**
+ *  Concrete Element que representa un artículo electrónico
+ */
+
 export class Electronics implements Element {
   name: string;
   unitPrice: number;

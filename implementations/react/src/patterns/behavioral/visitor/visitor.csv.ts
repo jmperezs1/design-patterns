@@ -3,6 +3,10 @@ import type { Electronics } from "./element-electronics";
 import type { Grocery } from "./element-grocery";
 import type { Visitor } from "./visitor";
 
+/**
+ * Visitor concreto que exporta los elementos a formato CSV
+ */
+
 export class CsvExportVisitor implements Visitor {
   rows: string[] = ["type,name,qty,unitPrice,extra"];
   visitBook(e: Book) {

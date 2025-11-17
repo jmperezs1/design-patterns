@@ -2,6 +2,9 @@ import { escapeCsv } from "./helpers/implementor";
 import type { Exporter } from "./implementor";
 import type { ReportData } from "./interfaces/report-data";
 
+/**
+ * Implementación concreta de Exporter que genera reportes en formato CSV.
+ */
 export class CsvExporter implements Exporter {
 
   async export(data: ReportData) {

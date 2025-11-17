@@ -1,6 +1,10 @@
 import type { Exporter } from "./implementor";
 import type { ReportData } from "./interfaces/report-data";
 
+/**
+ *Reporte que utiliza un Exporter para generar su salida.
+ */
+
 export abstract class Report {
     protected exporter: Exporter;
 

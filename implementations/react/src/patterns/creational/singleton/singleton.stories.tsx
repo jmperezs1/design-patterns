@@ -43,7 +43,7 @@ export const Implementation: StoryFn = () => {
         <div className="rounded-xl border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40 p-5 shadow-sm space-y-3">
           <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-300">Problemática General</h4>
           <p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200">
-            Algunos servicios (p. ej. cliente HTTP, configuración global, manejador de conexión) se instancian varias veces sin necesidad. Esto provoca consumo extra de memoria, inicializaciones duplicadas, estados inconsistentes y dificultad para coordinar políticas transversales.
+            Algunos servicios (p. ej. cliente HTTP, configuración global, manejador de conexión) se instancian varias veces sin necesidad. Esto provoca consumo extra de memoria, inicializaciones duplicadas, estados inconsistentes.
           </p>
           <p className="text-xs sm:text-sm text-amber-900/90 dark:text-amber-100/90">
             Sin una instancia compartida, cada parte del código puede crear su propia copia, perdiendo control sobre lifecycle, reintentos o límites de uso, y aumentando la superficie para errores sutiles.

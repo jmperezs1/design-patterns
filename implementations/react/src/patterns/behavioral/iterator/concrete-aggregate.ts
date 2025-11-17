@@ -3,6 +3,10 @@ import { PlaylistIterator } from "./concrete-iterator";
 import type { Song } from "./types/type";
 import type { Iterator } from "./iterator";
 
+/**
+ * Agregado concreto que representa una lista de reproducción de canciones.
+ */
+
 export class Playlist implements Aggregate<Song> {
   private items: Song[] = [];
   add(song: Song) { this.items.push(song); }

@@ -57,6 +57,13 @@ export const Implementation: StoryFn = () => {
 				</div>
 			</section>
 
+			<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+				<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+				<figure>
+					<img src="/img/real_composite.png" alt="Composite UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+				</figure>
+        	</div>
+
 			{/* Caso Específico */}
 			<section className="rounded-2xl border border-gray-300 dark:border-gray-700/80 bg-white dark:bg-zinc-900/70 p-6 shadow-sm space-y-8">
 				<header className="flex items-center gap-3 flex-wrap">
@@ -77,6 +84,14 @@ export const Implementation: StoryFn = () => {
 						Implementamos <code>JsonComponent</code> como interfaz común. <code>PrimitiveNode</code> es hoja; <code>ObjectNode</code> y <code>ArrayNode</code> son compuestos. Un <em>nodeBuilder</em> decide qué crear y un componente <code>JsonTreeRadix</code> recorre y dibuja el árbol.
 					</p>
 				</div>
+
+				<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/composite.png" alt="Composite UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+        		</div>
+
 
 				{/* Código Fuente */}
 				<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5 space-y-5">

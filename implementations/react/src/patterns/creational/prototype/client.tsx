@@ -6,12 +6,22 @@ import type { Prototype } from "./prototype";
 import { EmailTemplatePrototype } from "./concrete-prototype";
 import { renderEmail } from "./helpers/helpers";
 
-// --- keys como unión estricta
 const TEMPLATE_KEYS = ["welcome", "reset_password", "newsletter"] as const;
 type TemplateKey = (typeof TEMPLATE_KEYS)[number];
 
+/**
+ * Estudio interactivo para el patrón Prototype aplicado a plantillas de email.
+ *
+ * Define tres prototipos base (welcome, reset_password, newsletter) y permite
+ * generar clones con overrides de campos (incluido `layout`). La vista previa
+ * se renderiza a partir del clon y de un contexto de tokens clave=valor.
+ * También mantiene un "Outbox" con clones renderizados.
+ */
 export default function EmailTemplateStudio() {
-  // ---------- Prototypes (ocultos tras la interfaz)
+  /**
+   * Mapa de prototipos tipados por clave. Cada valor implementa `Prototype<EmailTemplate>`
+   * y oculta la implementación concreta (`EmailTemplatePrototype`).
+   */
   const templates = React.useMemo<Record<TemplateKey, Prototype<EmailTemplate>>>(() => {
     const welcome: Prototype<EmailTemplate> = new EmailTemplatePrototype({
       from: "noreply@acme.com",
@@ -97,6 +107,9 @@ export default function EmailTemplateStudio() {
     setBrandColor(base.layout?.brandColor ?? "#2563eb");
   }, [selected, templates]);
 
+  /**
+   * Parsea líneas "clave=valor" en un objeto de tokens para el renderizado.
+   */
   const parseTokens = React.useCallback((text: string) => {
     const ctx: Record<string, any> = {};
     for (const raw of text.split("\n")) {
@@ -110,6 +123,10 @@ export default function EmailTemplateStudio() {
     return ctx;
   }, []);
 
+  /**
+   * Overrides parciales que se aplicarán sobre la plantilla seleccionada al clonar.
+   * Sólo se incluyen propiedades con contenido no vacío para evitar sobreescrituras innecesarias.
+   */
   const overrides: Partial<EmailTemplate> = React.useMemo(() => {
     const o: Partial<EmailTemplate> = {};
     if (from.trim()) o.from = from;
@@ -123,13 +140,18 @@ export default function EmailTemplateStudio() {
     return o;
   }, [from, subject, bodyHtml, brandColor, headerHtml, footerHtml]);
 
+  /**
+   * HTML de vista previa generado a partir del clon de la plantilla y los tokens parseados.
+   */
   const preview = React.useMemo(() => {
     const tpl = templates[selected].clone(overrides).get();
     return renderEmail(tpl, parseTokens(tokensText));
   }, [templates, selected, overrides, tokensText, parseTokens]);
 
   // ---------- acciones
+  /** Clona la plantilla con overrides y la añade al Outbox. */
   const cloneAndAdd = () => setOutbox((prev) => [...prev, preview]);
+  /** Carga la plantilla base seleccionada en los campos de overrides. */
   const loadTemplateIntoOverrides = () => {
     const base = templates[selected].get();
     setFrom(base.from ?? "");
@@ -139,6 +161,7 @@ export default function EmailTemplateStudio() {
     setFooterHtml(base.layout?.footerHtml ?? "");
     setBrandColor(base.layout?.brandColor ?? brandColor);
   };
+  /** Limpia los campos de overrides (excepto color por defecto). */
   const clearOverrides = () => {
     setFrom(""); setSubject(""); setBodyHtml("");
     setHeaderHtml(""); setFooterHtml("");

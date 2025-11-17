@@ -1,6 +1,11 @@
+/**
+ * Receptor en el patrón Command.
+ */
+
 export class Receiver {
   private items: Map<string, number> = new Map();
 
+  /** Operaciones que el receptor puede realizar */
   addItem(item: string) {
     this.items.set(item, (this.items.get(item) || 0) + 1);
   }
@@ -15,7 +20,7 @@ export class Receiver {
     this.items.clear();
   }
 
-  // helpers for UI
+  /** Métodos para inspeccionar el estado del receptor */
   list(): Array<{ name: string; qty: number }> {
     return [...this.items.entries()].map(([name, qty]) => ({ name, qty }));
   }

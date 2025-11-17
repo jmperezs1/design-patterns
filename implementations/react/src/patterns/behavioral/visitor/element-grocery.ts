@@ -1,6 +1,10 @@
 import type { Visitor } from "./visitor";
 import type { Element } from "./element";
 
+/**
+ * Concrete Element que representa un artículo de supermercado
+ */
+
 export class Grocery implements Element {
   public name: string;
   public unitPrice: number;

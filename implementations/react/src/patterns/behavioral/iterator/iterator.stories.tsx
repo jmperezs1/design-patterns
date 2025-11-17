@@ -55,7 +55,7 @@ export const Implementation: StoryFn = () => (
     <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
       <h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
       <figure>
-        <img src="/img/real_prototype.png" alt="Iterator UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+        <img src="/img/real_iterator.png" alt="Iterator UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
       </figure>
     </div>
 
@@ -71,6 +71,13 @@ export const Implementation: StoryFn = () => (
           La <code>Playlist</code> expone un iterador que recorre canciones. El iterador soporta operaciones: <code>next</code>, <code>hasNext</code>, <code>remove</code> y <code>reset</code>.
         </p>
       </div>
+
+      <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/iterator.png" alt="Iterator UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+				</div>
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5 space-y-5">
         <h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Código Fuente</h5>

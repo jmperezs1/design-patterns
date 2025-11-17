@@ -1,6 +1,10 @@
 import type { Observer } from "./observer";
 import type { Quote } from "./types/type";
 
+/**
+ * Concrete Observer que alerta cuando el precio de una acción supera un umbral definido.
+ */
+
 export class ThresholdAlert implements Observer<Quote> {
   public logs: string[] = [];
   private targetSymbol: string;

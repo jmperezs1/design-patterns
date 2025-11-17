@@ -1,4 +1,8 @@
 
+
+/**
+ * Clase adaptada que proporciona una solicitud específica.
+ */
 export class Adaptee {
 
     specificRequest(): Promise<string>{

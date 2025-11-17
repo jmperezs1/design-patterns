@@ -1,6 +1,10 @@
 import { BadgeFlyweight } from "./concrete-flyweight";
 import type { FlyweightBadge } from "./flyweight-interface";
 
+/**
+ * Fábrica de Flyweights para gestionar y reutilizar instancias de badges.
+ */
+
 export class BadgeFactory {
   private cache = new Map<string, FlyweightBadge>();
 

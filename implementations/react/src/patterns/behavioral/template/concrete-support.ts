@@ -1,5 +1,7 @@
 import { FormTemplate } from "./abstract-class";
-
+/**
+ * Concrete Class que implementa los pasos específicos para un flujo de contacto de soporte.
+ */
 export class ContactFlow extends FormTemplate {
   protected validate(data: Record<string, any>) {
     if (!data.subject) throw new Error("Subject is required");

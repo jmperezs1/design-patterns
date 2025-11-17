@@ -1,5 +1,10 @@
 import { FormTemplate } from "./abstract-class";
 
+
+/**
+ * Concrete Class que implementa los pasos específicos para un flujo de registro de usuario.
+ */
+
 export class SignupFlow extends FormTemplate {
   protected validate(data: Record<string, any>) {
     if (!data.email) throw new Error("Email is required");

@@ -1,3 +1,7 @@
+/**
+ * El memento (Memento) almacena el estado interno del originador
+ */
+
 export class EditorMemento {
   readonly text: string;
   readonly createdAt: Date;

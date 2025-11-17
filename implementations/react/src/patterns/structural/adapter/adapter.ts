@@ -2,6 +2,10 @@ import type { Adaptee } from "./adaptee";
 import type { User } from "./interfaces/user";
 import type { Target } from "./target";
 
+/**
+ * Clase adaptadora que convierte la interfaz de Adaptee a la interfaz Target.
+ */
+
 export class Adapter implements Target {
 
     private adaptee: Adaptee;
@@ -10,6 +14,9 @@ export class Adapter implements Target {
         this.adaptee = adaptee;
     }
 
+    /**
+     * Convierte la respuesta CSV de Adaptee a un array de objetos User.
+     */
     async request(): Promise<User[]> {
         const csv = await this.adaptee.specificRequest();
         const lines = csv.trim().split(/\r?\n/);

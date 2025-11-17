@@ -105,7 +105,7 @@ export const Implementation: StoryFn<Args> = () => {
           <h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Problemática Específica</h5>
           <p className="text-sm text-gray-600 dark:text-gray-300">
             Una tarjeta puede tener título, subtítulo, imagen, cuerpo y pie. No todas las secciones son obligatorias y el
-            orden de armado importa. Construirla manualmente en cada uso duplica markup y complica mantener consistencia.
+            orden de armado importa.
           </p>
         </div>
 
@@ -164,7 +164,7 @@ export const Playground = (args: Args) => {
     <div className="space-y-5 w-full">
       <h3 className="text-lg font-semibold">Builder Pattern</h3>
       <div className="rounded-md border border-indigo-200 dark:border-indigo-800 bg-indigo-50/70 dark:bg-indigo-950/30 p-3 text-[12px] leading-relaxed text-indigo-900 dark:text-indigo-200">
-        <strong>Cómo interactuar:</strong> Cambia los campos <code>title</code>, <code>subtitle</code>, <code>mediaUrl</code>, <code>body</code> y <code>footer</code> desde el panel <em>Controls</em>. El <code>Director</code> invoca los pasos del <code>Builder</code> y renderiza el resultado en la tarjeta.
+        <strong>Cómo interactuar:</strong> Cambia los campos <code>title</code>, <code>subtitle</code>, <code>mediaUrl</code>, <code>body</code> y <code>footer</code> desde el panel <em>Show addons</em>. El <code>Director</code> invoca los pasos del <code>Builder</code> y renderiza el resultado en la tarjeta.
       </div>
       <div className="rounded-lg border bg-white/70 dark:bg-zinc-900 p-4">
         <Card {...product} />

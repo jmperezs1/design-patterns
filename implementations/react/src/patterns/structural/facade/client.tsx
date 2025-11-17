@@ -12,11 +12,9 @@ import { AppointmentFacade } from './facade';
 
 
 export default function AppointmentDemoRadix() {
-  // Toggle to simulate payment failure and see the facade’s rollback
   const [simulateFail, setSimulateFail] = useState(false);
 
   const facade = useMemo(() => {
-    // Swap the payment gateway with a failing one when toggled
     const failingPayments = new PaymentGateway(simulateFail);
     return new AppointmentFacade(undefined, failingPayments);
   }, [simulateFail]);

@@ -3,6 +3,10 @@ import type { Quote } from "./types/type";
 
 export type TickerEntry = { price: number; ts: number; direction: "up" | "down" | "flat" };
 
+/**
+ * Concrete Observer que mantiene un registro actualizado del precio y la dirección de múltiples acciones.
+ */
+
 export class TickerSnapshot implements Observer<Quote> {
   public data = new Map<string, TickerEntry>();
 

@@ -1,6 +1,11 @@
 import type { Visitor } from "./visitor";
 import type { Element } from "./element";
 
+/**
+ *  Concrete Element que representa un libro
+ */
+
+
 export class Book implements Element {
   public title: string;
   public unitPrice: number;

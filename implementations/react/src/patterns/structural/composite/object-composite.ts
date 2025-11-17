@@ -2,6 +2,10 @@ import type { JsonComponent } from "./component";
 import { buildNode } from "./helpers/node-builder";
 import type { Json } from "./types/json";
 
+/**
+ * Representa un nodo compuesto que maneja objetos en una estructura JSON.
+ */
+
 export class ObjectNode implements JsonComponent {
   private kids: JsonComponent[];
   public keyLabel: string;

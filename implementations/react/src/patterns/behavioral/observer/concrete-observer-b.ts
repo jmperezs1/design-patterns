@@ -1,6 +1,10 @@
 import type { Observer } from "./observer";
 import type { Quote } from "./types/type";
 
+/**
+ * Concrete Observer que calcula el promedio móvil simple (SMA) para una acción específica.
+ */
+
 export class SimpleMovingAverage implements Observer<Quote> {
   private symbol: string;
   private window: number;

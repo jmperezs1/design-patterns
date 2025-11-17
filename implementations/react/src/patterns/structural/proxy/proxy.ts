@@ -3,7 +3,9 @@ import type { ProductService } from "./subject";
 import type { Product } from "./type/type";
 
 
-
+/**
+ * El Proxy mantiene una referencia al objeto RealSubject. Puede
+ */
 export class CachingProductProxy implements ProductService {
   private real: HttpProductService;
   private cache = new Map<string, Product>();

@@ -2,6 +2,10 @@ import type { Playlist } from "./concrete-aggregate";
 import type { Song } from "./types/type";
 import type { Iterator } from "./iterator";
 
+/**
+ * Iterador concreto para la lista de reproducción de canciones.
+ */
+
 export class PlaylistIterator implements Iterator<Song> {
   private index = 0;
   private readonly aggregate: Playlist;

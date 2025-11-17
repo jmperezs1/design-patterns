@@ -51,7 +51,7 @@ export const Implementation = () => {
       </Flex>
 
       <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-        <strong>Factory</strong> es un patrón creacional que encapsula en un único punto la lógica necesaria para construir un tipo de producto con distintas variantes (colores, íconos, títulos, estilos). El objetivo es que el código cliente exprese intención ("quiero la variante X") sin repetir estructuras condicionales, clases utilitarias o markup redundante. Al centralizar la construcción, se facilita la evolución visual y se reduce el riesgo de inconsistencias.
+        <strong>Factory</strong> es un patrón creacional que encapsula en un único punto la lógica necesaria para construir un tipo de producto con distintas variantes (colores, íconos, títulos, estilos). El objetivo es que el código cliente exprese intención ("quiero la variante X") sin repetir estructuras condicionales. Al centralizar la construcción, se facilita la evolución visual y se reduce el riesgo de inconsistencias.
       </p>
 
       <Separator size="4" />

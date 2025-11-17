@@ -4,6 +4,9 @@ import type { Order } from "./interfaces/order";
 import type { ReportData } from "./interfaces/report-data";
 import type { Row } from "./interfaces/row";
 
+/**
+ * Reporte de órdenes que construye datos específicos para órdenes de compra.
+ */
 export class OrdersReport extends Report {
   private orders: Array<Order>;
   

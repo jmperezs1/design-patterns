@@ -1,3 +1,7 @@
+/**
+ * Clase Abstracta que define el esqueleto del algoritmo para manejar formularios.
+ */
+
 export abstract class FormTemplate {
   async submit(formData: Record<string, any>) {
     const cleanData = this.validate(formData);

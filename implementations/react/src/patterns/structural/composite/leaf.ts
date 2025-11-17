@@ -1,5 +1,9 @@
 import type { JsonComponent } from "./component";
 
+/**
+ * Representa un nodo hoja que maneja valores primitivos en una estructura JSON.
+ */
+
 export class PrimitiveNode implements JsonComponent {
   public keyLabel: string;
   private value: string | number | boolean | null;

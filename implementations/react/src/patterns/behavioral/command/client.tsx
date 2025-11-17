@@ -20,6 +20,7 @@ export default function CommandListRadix() {
   const [v, setV] = useState(0);
   const rerender = () => setV((x) => x + 1);
 
+  /** Handlers para los botones */
   const doAdd = (name: string) => {
     invoker.setCommand(add);
     invoker.executeCommand(name);

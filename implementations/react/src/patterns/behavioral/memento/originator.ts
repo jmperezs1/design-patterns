@@ -1,5 +1,9 @@
 import { EditorMemento } from "./memento";
 
+/**
+ * El originador (Originator) es el objeto cuyo estado queremos guardar
+ */
+
 export class EditorOriginator {
   private text = "";
 

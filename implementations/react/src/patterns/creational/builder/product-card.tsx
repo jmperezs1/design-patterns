@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Representa el producto construido por el Builder: una tarjeta configurable.
+ * Todas las propiedades son opcionales y pueden establecerse de forma incremental
+ * mediante el `CardBuilder`.
+ */
 export type CardProduct = {
   title?: string;
   subtitle?: string;
@@ -8,6 +13,12 @@ export type CardProduct = {
   footer?: React.ReactNode;
 };
 
+/**
+ * Componente visual de tarjeta que renderiza un `CardProduct`.
+ *
+ * No aplica lógica de construcción; únicamente presenta las propiedades
+ * recibidas con un estilo básico.
+ */
 export const Card: React.FC<CardProduct> = ({
   title,
   subtitle,

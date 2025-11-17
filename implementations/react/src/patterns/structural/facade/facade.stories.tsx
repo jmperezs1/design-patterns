@@ -36,7 +36,7 @@ export const Implementation: StoryFn = () => {
 
 			{/* Resumen */}
 			<p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-				<strong>Facade</strong> simplifica la interacción con sistemas complejos exponiendo una interfaz mínima. Reduce acoplamiento, mejora la legibilidad y centraliza reglas transversales como validación, logging, reintentos y <em>rollback</em>.
+				<strong>Facade</strong> simplifica la interacción con sistemas complejos exponiendo una interfaz mínima. Reduce acoplamiento, mejora la legibilidad y centraliza reglas de validación, logging, reintentos y <em>rollback</em>.
 			</p>
 
 			<Separator size="4" />
@@ -56,6 +56,13 @@ export const Implementation: StoryFn = () => {
 					</p>
 				</div>
 			</section>
+
+			<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/real_facade.png" alt="Facade UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+        	</div>
 
 			{/* Caso Específico */}
 			<section className="rounded-2xl border border-gray-300 dark:border-gray-700/80 bg-white dark:bg-zinc-900/70 p-6 shadow-sm space-y-8">
@@ -77,6 +84,13 @@ export const Implementation: StoryFn = () => {
 						<code>AppointmentFacade</code> coordina <code>CRM</code>, <code>Calendar</code>, <code>Payments</code>, <code>Notifications</code> y <code>Audit</code>. Ejecuta pasos en orden y, ante error en pagos, aplica compensación cancelando la reserva y dejando trazas.
 					</p>
 				</div>
+
+				<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5">
+					<h5 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Diagrama UML</h5>
+					<figure>
+						<img src="/img/facade.png" alt="Facade UML Diagram" className="w-full h-auto rounded-md border border-gray-100 dark:border-gray-700 shadow-sm" loading="lazy" />
+					</figure>
+        	</div>
 
 				{/* Código Fuente */}
 				<div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 p-5 space-y-5">

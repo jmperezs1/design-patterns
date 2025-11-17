@@ -198,7 +198,7 @@ export const Playground: StoryFn<PlaygroundArgs> = (args) => {
   return (
     <div className="space-y-4">
       <div className="rounded-md border border-indigo-200 dark:border-indigo-800 bg-indigo-50/70 dark:bg-indigo-950/30 p-3 text-md leading-relaxed text-indigo-900 dark:text-indigo-200">
-        <strong>Cómo interactuar:</strong> Cambia los valores <code>mode</code> y <code>variant</code> usando el panel <em>Controls</em> que es el primer boton en la parte superior derecha. Si el toast se cerró, pulsa el botón <em>Reabrir Toast</em> abajo. <br />
+        <strong>Cómo interactuar:</strong> Cambia los valores <code>mode</code> y <code>variant</code> usando el panel <em>Show addons</em> que es el primer boton en la parte superior derecha. Si el toast se cerró, pulsa el botón <em>Reabrir Toast</em> abajo. <br />
         Cada cambio fuerza la recreación de la variante sin modificar el flujo del cliente.
       </div>
       {args.mode === 'toast' && (

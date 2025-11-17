@@ -2,6 +2,10 @@ import type { Observer } from "./observer";
 import type { Subject } from "./subject";
 import type { Quote } from "./types/type";
 
+/**
+ * Concrete Subject que simula un hub de datos de mercado que notifica a los observadores con cotizaciones aleatorias.
+ */
+
 export class MarketDataHub implements Subject<Quote> {
   private observers = new Set<Observer<Quote>>();
   private timer?: number;

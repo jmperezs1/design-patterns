@@ -12,6 +12,8 @@ export const usePokemon = (pokemonName: string) => {
   useEffect(() => {
     let alive = true
     setState((s) => ({ ...s, loading: true, error: undefined, pokemon: undefined }))
+    
+    /** Obtener datos del Pokémon usando el singleton */
     pokemonAPI.getPokemonData(pokemonName)
       .then((data) => {
         if (alive) {

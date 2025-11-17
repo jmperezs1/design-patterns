@@ -1,5 +1,9 @@
 import type { Payment } from "../types/types";
 
+/**
+ * Subsistema de pago que maneja la autorización y anulación de pagos.
+ */
+
 export class PaymentGateway {
   private shouldFail: boolean;
   constructor(shouldFail = false) { this.shouldFail = shouldFail; }

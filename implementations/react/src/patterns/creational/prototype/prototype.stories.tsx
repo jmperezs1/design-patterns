@@ -54,9 +54,6 @@ export const Implementation: StoryFn = () => {
             Definir prototipos base y exponer una operación de <em>clone</em> que devuelve copias listas para aplicar overrides
             puntuales. El cliente no conoce la clase concreta: trabaja contra la interfaz <code>Prototype&lt;T&gt;</code>.
           </p>
-          <p className="text-xs sm:text-sm text-emerald-900/90 dark:text-emerald-100/90">
-            Beneficios: velocidad para crear variaciones, consistencia de defaults y menor riesgo de drift entre versiones.
-          </p>
         </div>
       </section>
 

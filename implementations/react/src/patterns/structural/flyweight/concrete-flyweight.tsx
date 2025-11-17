@@ -1,5 +1,8 @@
 import type { FlyweightBadge } from "./flyweight-interface";
 
+/**
+ * Implementación concreta del patrón Flyweight para un componente de insignia (badge).
+ */
 export class BadgeFlyweight implements FlyweightBadge {
 
   private intrinsic: {

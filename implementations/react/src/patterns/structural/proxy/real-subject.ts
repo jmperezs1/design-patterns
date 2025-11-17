@@ -1,6 +1,9 @@
 import type { ProductService } from "./subject";
 import type { Product } from "./type/type";
 
+/**
+ * La clase RealSubject contiene la lógica de negocio principal. Normalmente,
+ */
 export class HttpProductService implements ProductService {
   private hits = 0;
 
