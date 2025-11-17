@@ -108,7 +108,7 @@ En el root tienes:
 }
 ```
 ---
-
+## Instalar dependencias
 ## 1) React (Web)
 
 ```bash
@@ -150,28 +150,25 @@ RUTA:
 cd implementations/react-native/design-patterns-rn
 npm install
 ```
-
-```
-
 Navegación:
 - Lista de patrones
 - Playground interactivo en cada pantalla
 
 ---
 
-### Ejecutar desde root
+## Ejecución desde el root del proyecto
 
-React Web:
+### 1) React Stoybook:
 ```bash
 npm run storybook
 ```
-
+### 2) Flutter:
 Flutter:
 ```bash
 npm run flutter:run
 ```
 
-React Native:
+### 3 )React Native:
 ```bash
 npm run rn:android_run
 
