@@ -182,24 +182,6 @@ npm run rn:android_run
 adb devices
 ```
 
-### Emulador no arranca
-- Habilitar VT-x/AMD-V en BIOS
-- Usar imágenes Google APIs x86_64
-
-### Problemas en React o RN
-```bash
-rm -rf node_modules
-npm install
-npm start -- --reset-cache
-```
-
-### Problemas en Android (Flutter o RN)
-```bash
-yes | sdkmanager --licenses
-```
-
----
-
 ### Licencias
 
 | Librería | Licencia |
