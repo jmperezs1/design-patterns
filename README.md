@@ -8,10 +8,6 @@ Repositorio monorepo con tres implementaciones paralelas de patrones de diseño:
 
 Incluye demos interactivos, playgrounds y componentes UI modernos (Radix, shadcn/ui, Tailwind, etc.).
 
-> Guía de ejecución consolidada (React, Flutter y React Native): consulta `GUIDE_EJECUCION.md` en el root del repositorio.
-
----
-
 ## Estructura del repositorio
 
 - `implementations/react`
