@@ -120,8 +120,19 @@ export const CodeBlock: React.FC<Props> = ({
 
       {open && (
         <View style={{ height }}>
-          <ScrollView horizontal showsHorizontalScrollIndicator>
-            <ScrollView style={styles.codeContainer}>
+          {/* Nested horizontal + vertical scroll: enable vertical scrolling inside parent ScrollView (pattern detail) */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator
+            nestedScrollEnabled
+            contentContainerStyle={{ flexGrow: 1 }}
+          >
+            <ScrollView
+              style={styles.codeContainer}
+              nestedScrollEnabled
+              keyboardShouldPersistTaps="handled"
+              showsVerticalScrollIndicator
+            >
               <SyntaxHighlightedText code={code.trim()} />
             </ScrollView>
           </ScrollView>

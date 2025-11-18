@@ -36,6 +36,18 @@ import { commandCodeSnippets } from '../patterns/behavioral/command/code';
 import { strategyCodeSnippets } from '../patterns/behavioral/strategy/code';
 import { stateCodeSnippets } from '../patterns/behavioral/state/code';
 import { chainCodeSnippets } from '../patterns/behavioral/chain_of_responsibility/code';
+import { compositeCodeSnippets } from '../patterns/structural/composite/code-snippets';
+import { decoratorCodeSnippets } from '../patterns/structural/decorator/code-snippets';
+import { facadeCodeSnippets } from '../patterns/structural/facade/code-snippets';
+import { flyweightCodeSnippets } from '../patterns/structural/flyweight/code-snippets';
+import { proxyCodeSnippets } from '../patterns/structural/proxy/code';
+import { mediatorCodeSnippets } from '../patterns/behavioral/mediator/code-snippets';
+import { mementoCodeSnippets } from '../patterns/behavioral/memento/code-snippets';
+import { observerCodeSnippets } from '../patterns/behavioral/observer/code';
+import { templateCodeSnippets } from '../patterns/behavioral/template/code-snippets';
+import { visitorCodeSnippets } from '../patterns/behavioral/visitor/code';
+import { interpreterCodeSnippets } from '../patterns/behavioral/interpreter/code';
+import { iteratorCodeSnippets } from '../patterns/behavioral/iterator/code';
 
 export const patterns: PatternEntry[] = [
     {
@@ -112,6 +124,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/composite.png'),
       specific: require('../../assets/img/real_composite.png'),
     },
+    codeSnippets: compositeCodeSnippets,
   },
   {
     id: 'decorator',
@@ -129,6 +142,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/decorator.png'),
       specific: require('../../assets/img/real_decorator.png'),
     },
+    codeSnippets: decoratorCodeSnippets,
   },
   {
     id: 'facade',
@@ -146,6 +160,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/facade.png'),
       specific: require('../../assets/img/real_facade.png'),
     },
+    codeSnippets: facadeCodeSnippets,
   },
   {
     id: 'flyweight',
@@ -163,6 +178,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/flyweight.png'),
       specific: require('../../assets/img/real_flyweight.png'),
     },
+    codeSnippets: flyweightCodeSnippets,
   },
   {
     id: 'proxy',
@@ -180,6 +196,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/proxy.png'),
       specific: require('../../assets/img/real_proxy.png'),
     },
+    codeSnippets: proxyCodeSnippets,
   },
   {
     id: 'abstract_factory',
@@ -311,6 +328,7 @@ export const patterns: PatternEntry[] = [
     images: {
       specific: require('../../assets/img/real_mediator.png'),
     },
+    codeSnippets: mediatorCodeSnippets,
   },
   {
     id: 'memento',
@@ -327,6 +345,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/memento.png'),
       specific: require('../../assets/img/real_memento.png'),
     },
+    codeSnippets: mementoCodeSnippets,
   },
   {
     id: 'observer',
@@ -343,6 +362,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/observer.png'),
       specific: require('../../assets/img/real_observer.png'),
     },
+    codeSnippets: observerCodeSnippets,
   },
   {
     id: 'template',
@@ -359,6 +379,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/template.png'),
       specific: require('../../assets/img/real_template.png'),
     },
+    codeSnippets: templateCodeSnippets,
   },
   {
     id: 'visitor',
@@ -375,6 +396,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/visitor.png'),
       specific: require('../../assets/img/real_visitor.png'),
     },
+    codeSnippets: visitorCodeSnippets,
   },
   {
     id: 'interpreter',
@@ -392,6 +414,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/interpreter.png'),
       specific: require('../../assets/img/real_interpreter.png'),
     },
+    codeSnippets: interpreterCodeSnippets,
   },
   {
     id: 'iterator',
@@ -409,6 +432,7 @@ export const patterns: PatternEntry[] = [
       general: require('../../assets/img/iterator.png'),
       specific: require('../../assets/img/real_iterator.png'),
     },
+    codeSnippets: iteratorCodeSnippets,
   },
   {
     id: 'state',

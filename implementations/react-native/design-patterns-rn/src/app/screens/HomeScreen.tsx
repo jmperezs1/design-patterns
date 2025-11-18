@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { patterns, groupByCategory } from '../../registry/patterns';
 import { SearchInput } from '../../components/SearchInput';
 import { PatternCard } from '../../components/PatternCard';
@@ -27,7 +27,8 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
   }, [q]);
 
   return (
-    <View style={styles.screen}>
+    // ScrollView para permitir desplazamiento cuando múltiples categorías están expandidas.
+    <ScrollView contentContainerStyle={styles.screen} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator>
       <Text style={styles.h1}>Design Patterns</Text>
       <SearchInput value={q} onChangeText={setQ} placeholder="Buscar patrones…" />
       {sections.map((section) => (
@@ -67,12 +68,13 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
             ))}
         </View>
       ))}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, padding: 16, gap: 12 },
+  // Usado como contentContainerStyle del ScrollView: no requiere flex:1.
+  screen: { padding: 16, gap: 12 },
   h1: { fontSize: 22, fontWeight: '700' },
   section: { marginTop: 12, marginBottom: 8, fontWeight: '700' },
   sectionHeader: {

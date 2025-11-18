@@ -1,0 +1,7 @@
+import type { CodeSnippet } from '../../../registry/types';
+
+export const visitorCodeSnippets: CodeSnippet[] = [
+  { title: 'visitor.ts', language: 'ts', code: `import type { Book } from './element-book.ts';\nimport type { Electronics } from './element-electronics.ts';\nimport type { Grocery } from './element-grocery.ts';\nexport interface Visitor { visitBook(e: Book): void; visitElectronics(e: Electronics): void; visitGrocery(e: Grocery): void; }` },
+  { title: 'element.ts', language: 'ts', code: `import type { Visitor } from './visitor';\nexport interface Element { accept(v: Visitor): void; }` },
+  { title: 'visitor-total-price.ts', language: 'ts', code: `import type { Book } from './element-book';\nimport type { Electronics } from './element-electronics';\nimport type { Grocery } from './element-grocery';\nimport type { Visitor } from './visitor';\nexport class TotalPriceVisitor implements Visitor {\n  subtotal = 0; tax = 0; total = 0;\n  visitBook(e: Book) { const base = e.unitPrice * e.qty; const tax = (e.isImported ? 0.05 : 0) * base; this.subtotal += base; this.tax += tax; this.total += base + tax; }\n  visitElectronics(e: Electronics) { const base = e.unitPrice * e.qty; const tax = 0.15 * base; this.subtotal += base; this.tax += tax; this.total += base + tax; }\n  visitGrocery(e: Grocery) { const base = e.unitPrice * e.qty; const tax = 0; this.subtotal += base; this.tax += tax; this.total += base + tax; }\n}` },
+];
