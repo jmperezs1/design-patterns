@@ -21,6 +21,8 @@ class DecoratorScreen extends StatelessWidget {
           'Modelar una hamburguesa base y aplicar add-ons (queso, tocineta, carne extra) como decoradores que ajustan descripción y precio.',
       solucionEspecifica:
           'Burger (interfaz) + PlainBurger (componente base) + BurgerDecorator (abstracto) + Cheese/Bacon/Double decorators. Un cliente construye el pedido envolviendo el objeto en sucesivos decoradores.',
+    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_decorator.png',
+    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/decorator.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'burger.dart',

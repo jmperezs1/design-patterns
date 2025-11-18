@@ -21,6 +21,8 @@ class ProxyScreen extends StatelessWidget {
           'Servicio de productos: CachingProductProxy añade caché, comparte solicitudes simultáneas y reporta métricas.',
       solucionEspecifica:
           'Proxy mantiene cache e inflight maps; en hit devuelve cache; si hay request en vuelo devuelve la promesa compartida; si no, delega al RealSubject y cachea resultado.',
+    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_proxy.png',
+    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/proxy.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'subject.dart',

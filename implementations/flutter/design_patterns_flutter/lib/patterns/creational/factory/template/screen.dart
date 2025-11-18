@@ -26,8 +26,8 @@ class FactoryScreen extends StatelessWidget {
           'Mensajes de estado (success/alert/informative/warning) que deben lucir y comportarse de forma consistente a lo largo de la app.',
       solucionEspecifica:
           'La función createWrapper(variant, child) actúa como fábrica: a partir de la variante selecciona paleta de colores, icono y estructura del contenedor, y retorna un widget listo para usar en la UI.',
-      diagramaSolucionGeneralAssetPath: null,
-      diagramaSolucionEspecificaAssetPath: null,
+        diagramaSolucionGeneralAssetPath: null,
+        diagramaSolucionEspecificaAssetPath: null,
       codeSnippets: const [
         CodeSnippet(title: 'factory.dart', code: factory_code.kFactorySource),
         CodeSnippet(title: 'demo.dart', code: factory_demo_code.factoryDemo),

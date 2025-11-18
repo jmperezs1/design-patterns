@@ -108,6 +108,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Implementamos JsonComponent con PrimitiveNode, ArrayNode y ObjectNode y un helper buildNode(json) que construye la jerarquía. La UI muestra el árbol JSON.',
     playgroundExplicacion: 'Explora el JSON anidado y expande los nodos para ver su contenido y preview. El demo demuestra cómo tratar nodos y composiciones de forma uniforme.',
     playgroundComoInteractuar: 'Observa el árbol generado a partir de un JSON de ejemplo; no requiere entrada del usuario para explorar la estructura.',
+    images: {
+      general: require('../../assets/img/composite.png'),
+      specific: require('../../assets/img/real_composite.png'),
+    },
   },
   {
     id: 'decorator',
@@ -121,6 +125,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Implementamos Burger/BurgerDecorator y Cheese/Bacon/DoublePatty. El demo aplica toggles para envolver la hamburguesa base con los decoradores y muestra el detalle de precio.',
     playgroundExplicacion: 'Activa/desactiva add-ons para ver cómo cambian la descripción y el total del pedido.',
     playgroundComoInteractuar: 'Activa los switches para añadir Queso/Tocineta/Extra carne. Pulsa Limpiar para reiniciar la selección.',
+    images: {
+      general: require('../../assets/img/decorator.png'),
+      specific: require('../../assets/img/real_decorator.png'),
+    },
   },
   {
     id: 'facade',
@@ -134,6 +142,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'AppointmentFacade.book() ejecuta los pasos en orden y aplica rollback cuando es necesario. El demo permite simular fallo de pago para ver la compensación.',
     playgroundExplicacion: 'Rellena los datos de la cita y pulsa Reservar; activa "Simular fallo" para forzar la reversión.',
     playgroundComoInteractuar: 'Rellena formulario, alterna Simular fallo y pulsa Reservar cita; observa el log de pasos y rollback en caso de error.',
+    images: {
+      general: require('../../assets/img/facade.png'),
+      specific: require('../../assets/img/real_facade.png'),
+    },
   },
   {
     id: 'flyweight',
@@ -147,6 +159,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'BadgeFactory.get(variant).operation({text,x,y,color}) reutiliza flyweights con estilo intrínseco compartido y evita creación masiva de instancias.',
     playgroundExplicacion: 'Ajusta la cantidad de badges y observa que el contador de flyweights en caché permanece bajo (según variantes).',
     playgroundComoInteractuar: 'Cambia la cantidad y pulsa 500/2500/5000 para ver el efecto en el contenedor.',
+    images: {
+      general: require('../../assets/img/flyweight.png'),
+      specific: require('../../assets/img/real_flyweight.png'),
+    },
   },
   {
     id: 'proxy',
@@ -160,6 +176,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Implementamos CachingProductProxy con cache + inflight map y demo para cargar, ráfaga x5 y ver métricas.',
     playgroundExplicacion: 'Cambia el ID y pulsa Cargar o Ráfaga x5. Observa los contadores de caché y llamadas de red.',
     playgroundComoInteractuar: 'Ingresa un ID y presiona Cargar; usa Ráfaga x5 para ver deduplicación en paralelo; limpia la caché para forzar redes.',
+    images: {
+      general: require('../../assets/img/proxy.png'),
+      specific: require('../../assets/img/real_proxy.png'),
+    },
   },
   {
     id: 'abstract_factory',
@@ -288,6 +308,9 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Implementamos Colleague base, colegas concretos y ConcreteMediator que coordina la búsqueda, el filtrado y el borrado.',
     playgroundExplicacion: 'Escribe una consulta, cambia la categoría o pulsa Clear para ver cómo el mediador coordina las acciones y genera logs.',
     playgroundComoInteractuar: 'Usa el input para buscar, los chips para filtrar por categoría y Clear para restablecer.',
+    images: {
+      specific: require('../../assets/img/real_mediator.png'),
+    },
   },
   {
     id: 'memento',
@@ -300,6 +323,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Implementamos EditorOriginator que produce EditorMemento; EditorCaretaker guarda checkpoints y maneja undo/redo. La UI guarda y restaura snapshots sin acceder al estado interno directamente.',
     playgroundExplicacion: 'Escribe texto, guarda checkpoints y usa Deshacer/Rehacer para navegar por el historial de snapshots.',
     playgroundComoInteractuar: 'Usa Guardar checkpoint, Deshacer y Rehacer; prueba los presets para ver cómo se crean y restauran snapshots.',
+    images: {
+      general: require('../../assets/img/memento.png'),
+      specific: require('../../assets/img/real_memento.png'),
+    },
   },
   {
     id: 'observer',
@@ -312,6 +339,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'MarketDataHub emite cotizaciones; ThresholdAlert, SimpleMovingAverage y TickerSnapshot son observers que reaccionan a los ticks. La UI controla suscripciones y muestra datos/alertas.',
     playgroundExplicacion: 'Inicia la fuente de ticks, activa o desactiva observadores y observa cómo se actualizan las métricas y alertas en tiempo real.',
     playgroundComoInteractuar: 'Usa Iniciar/Detener y los switches para suscribir o quitar observadores. Cambia el símbolo, umbral y ventana del SMA para ver diferencias.',
+    images: {
+      general: require('../../assets/img/observer.png'),
+      specific: require('../../assets/img/real_observer.png'),
+    },
   },
   {
     id: 'template',
@@ -324,6 +355,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Implementamos ContactFlow y SignupFlow que heredan de FormTemplate; la UI usa SimpleForm para interactuar con los flows.',
     playgroundExplicacion: 'Rellena los formularios de contacto y signup. Observa cómo el submit reutiliza la plantilla de flujo y cada flow ejecuta pasos específicos.',
     playgroundComoInteractuar: 'Rellena campos y pulsa Submit; verás mensajes de error o success según la validación y el envío simulado.',
+    images: {
+      general: require('../../assets/img/template.png'),
+      specific: require('../../assets/img/real_template.png'),
+    },
   },
   {
     id: 'visitor',
@@ -336,6 +371,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Creamos Book/Electronics/Grocery como elementos; TotalPriceVisitor, ShippingEstimatorVisitor y CsvExportVisitor son visitantes que recorren los elementos para calcular resultados.',
     playgroundExplicacion: 'Agrega ítems al carrito y aplica diferentes visitantes: totales, envío o exportar CSV.',
     playgroundComoInteractuar: 'Rellena el formulario de ítems, pulsa Agregar, luego usa Calcular Totales / Estimar Envío / Exportar CSV para ver el resultado.',
+    images: {
+      general: require('../../assets/img/visitor.png'),
+      specific: require('../../assets/img/real_visitor.png'),
+    },
   },
   {
     id: 'interpreter',
@@ -349,6 +388,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Tokenizamos la entrada, convertimos a RPN con shunting-yard, construimos el AST y evaluamos con interpret().',
     playgroundExplicacion: 'Escribe una expresión aritmética con dígitos, +, * y paréntesis, luego pulsa Evaluar para ver RPN y resultado.',
     playgroundComoInteractuar: 'Prueba los ejemplos o escribe tu propia expresión. El parser muestra errores en caso de sintaxis inválida.',
+    images: {
+      general: require('../../assets/img/interpreter.png'),
+      specific: require('../../assets/img/real_interpreter.png'),
+    },
   },
   {
     id: 'iterator',
@@ -362,6 +405,10 @@ export const patterns: PatternEntry[] = [
     solucionEspecifica: 'Playlist expone createIterator() y el cliente usa hasNext/next/remove/reset para controlar el recorrido.',
     playgroundExplicacion: 'Agrega canciones, crea un iterador y avanza para reproducir/eliminar elementos.',
     playgroundComoInteractuar: 'Usa los controles Crear iterador / Siguiente / Eliminar / Reiniciar para ver el comportamiento.',
+    images: {
+      general: require('../../assets/img/iterator.png'),
+      specific: require('../../assets/img/real_iterator.png'),
+    },
   },
   {
     id: 'state',

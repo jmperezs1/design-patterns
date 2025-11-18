@@ -21,6 +21,8 @@ class VisitorScreen extends StatelessWidget {
           'Carrito de compras con distintos tipos de ítems: libros, electrónica, alimentos. Aplicar visitantes para totales, envío y exportación CSV.',
       solucionEspecifica:
           'Cada elemento implementa accept(). Los visitantes calculan totales o exportan sin modificar la jerarquía de elementos.',
+    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_visitor.png',
+    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/visitor.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'element.dart',

@@ -22,6 +22,8 @@ class TemplateMethodScreen extends StatelessWidget {
           'Flujos de formularios: Signup y Contact comparten validar → enviar → afterSuccess → mensaje; cada uno implementa sus detalles.',
       solucionEspecifica:
           'FormTemplate.submit() orquesta el flujo. SimpleForm delega la acción a la instancia del flow (SignupFlow / ContactFlow).',
+    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_template.png',
+    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/template.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'abstract-class.dart',

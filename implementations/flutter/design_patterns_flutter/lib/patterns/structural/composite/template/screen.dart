@@ -34,6 +34,8 @@ class CompositeScreen extends StatelessWidget {
           'Representar JSON como un árbol interactivo con nodos de objeto, arreglo y primitivos.',
       solucionEspecifica:
           'ArrayNode/ObjectNode/PrimitiveNode implementan JsonComponent. Un builder crea nodos recursivamente y la UI renderiza el árbol con expand/collapse.',
+    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_composite.png',
+    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/composite.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'component.dart',
