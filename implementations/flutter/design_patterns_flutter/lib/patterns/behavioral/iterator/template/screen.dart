@@ -21,8 +21,8 @@ class IteratorScreen extends StatelessWidget {
           'Reproducir una playlist: el cliente crea un iterador y avanza por las canciones, pudiendo eliminar elementos durante la iteración.',
       solucionEspecifica:
           'Se implementa un Playlist que genera un PlaylistIterator. El iterador ofrece hasNext/next/remove/reset.',
-    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_iterator.png',
-    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/iterator.png',
+      diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_iterator.png',
+      diagramaSolucionEspecificaAssetPath: 'assets/diagrams/iterator.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'iterator.dart',

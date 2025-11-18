@@ -21,8 +21,8 @@ class ObserverScreen extends StatelessWidget {
           'Un hub de datos de mercado emite cotizaciones aleatorias. Observers: alerta de umbral, promedio móvil, tablero de símbolos y registro textual.',
       solucionEspecifica:
           'El MarketDataHub genera ticks y notifica. Cada observer procesa sólo los símbolos relevantes y mantiene su propio estado (logs, promedio, snapshot).',
-    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_observer.png',
-    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/observer.png',
+      diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_observer.png',
+      diagramaSolucionEspecificaAssetPath: 'assets/diagrams/observer.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'observer.dart',

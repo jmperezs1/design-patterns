@@ -21,8 +21,8 @@ class FacadeScreen extends StatelessWidget {
           'Reservar una cita: la fachada orquesta upsertCustomer, reserve, authorize, createActivity, email/sms; revierte si falla el pago.',
       solucionEspecifica:
           'AppointmentFacade.book(...) que ejecuta pasos y aplica rollback si alguno falla.',
-    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_facade.png',
-    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/facade.png',
+      diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_facade.png',
+      diagramaSolucionEspecificaAssetPath: 'assets/diagrams/facade.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'facade.dart',

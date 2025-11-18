@@ -21,8 +21,8 @@ class FlyweightScreen extends StatelessWidget {
           'Pool de badges: sólo se crean flyweights por variante (pill, rounded-outline, chip) y se reutilizan para miles de items.',
       solucionEspecifica:
           'BadgeFlyweight + BadgeFactory + cliente que llama operation(extrinsic) para cada item.',
-    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_flyweight.png',
-    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/flyweight.png',
+      diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_flyweight.png',
+      diagramaSolucionEspecificaAssetPath: 'assets/diagrams/flyweight.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'flyweight_interface.dart',

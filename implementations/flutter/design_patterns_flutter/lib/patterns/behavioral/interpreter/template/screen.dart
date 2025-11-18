@@ -21,8 +21,8 @@ class InterpreterScreen extends StatelessWidget {
           'Aritmética básica con enteros: suma (+) y multiplicación (*) con paréntesis y precedencia estándar (* sobre +).',
       solucionEspecifica:
           'Se crean NumberExpression (terminal), AdditionExpression y MultiplicationExpression (no terminales). Un parser convierte la entrada a RPN (shunting-yard) y construye el árbol.',
-    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_interpreter.png',
-    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/interpreter.png',
+      diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_interpreter.png',
+      diagramaSolucionEspecificaAssetPath: 'assets/diagrams/interpreter.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'expression.dart',

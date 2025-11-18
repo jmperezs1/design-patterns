@@ -22,8 +22,8 @@ class BridgeScreen extends StatelessWidget {
           'Reportes (Órdenes/Inventario) que pueden exportarse a CSV o JSON. Las distintas combinaciones funcionan sin crear clases por cada par. La Abstracción (Report) usa un Exporter intercambiable.',
       solucionEspecifica:
           'OrdersReport e InventoryReport construyen los datos (ReportData) y delegan el formato en CsvExporter o JsonExporter. generateReport() invoca export() del implementor seleccionado.',
-  diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_bridge.png',
-  diagramaSolucionEspecificaAssetPath: 'assets/diagrams/bridge.png',
+      diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_bridge.png',
+      diagramaSolucionEspecificaAssetPath: 'assets/diagrams/bridge.png',
       codeSnippets: [
         CodeSnippet(
           title: 'abstraction.dart',

@@ -21,8 +21,8 @@ class MementoScreen extends StatelessWidget {
           'Un editor de texto con checkpoints: se pueden crear snapshots, deshacer al anterior o rehacer, limpiando el stack de rehacer al crear un nuevo checkpoint.',
       solucionEspecifica:
           'Definimos EditorOriginator (estado del texto), EditorMemento (snapshot) y EditorCaretaker (gestiona pilas de undo/redo).',
-    diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_memento.png',
-    diagramaSolucionEspecificaAssetPath: 'assets/diagrams/memento.png',
+      diagramaSolucionGeneralAssetPath: 'assets/diagrams/real_memento.png',
+      diagramaSolucionEspecificaAssetPath: 'assets/diagrams/memento.png',
       codeSnippets: const [
         CodeSnippet(
           title: 'memento.dart',
